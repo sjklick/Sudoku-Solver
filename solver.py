@@ -8,16 +8,6 @@ puzzle = [['5', '3', '.', '.', '7', '.', '.', '.', '.'],
           ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
           ['.', '.', '.', '.', '8', '.', '.', '7', '9']]
 
-solution = [['5', '3', '.', '.', '7', '.', '.', '.', '.'],
-            ['6', '.', '.', '1', '9', '5', '.', '.', '.'],
-            ['.', '9', '8', '.', '.', '.', '.', '6', '.'],
-            ['8', '.', '.', '.', '6', '.', '.', '.', '3'],
-            ['4', '.', '.', '8', '.', '3', '.', '.', '1'],
-            ['7', '.', '.', '.', '2', '.', '.', '.', '6'],
-            ['.', '6', '.', '.', '.', '.', '2', '8', '.'],
-            ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
-            ['.', '.', '.', '.', '8', '.', '.', '7', '9']]
-
 row_options = [[True for options in range(9)] for rows in range(9)]
 column_options = [[True for options in range(9)] for columns in range(9)]
 block_options = [[[True for options in range(9)] for y in range(3)] for x in range(3)]
@@ -69,7 +59,9 @@ def update_options(puzzle):
                     square_options[row][column][option] = False
                 square_options[row][column][int(puzzle[row][column])-1] = True
 
+# Return True if the solution was modified.
 def update_solution(puzzle):
+    modified = False
     for row in range(9):
         for column in range(9):
             num_options = 0
@@ -79,11 +71,17 @@ def update_solution(puzzle):
             if num_options == 1:
                 for option in range(9):
                     if square_options[row][column][option] == True:
-                        puzzle[row][column] = option+1
+                        if puzzle[row][column] == '.':
+                            modified = True
+                        puzzle[row][column] = str(option+1)
                         break
+    return modified
 
 print_puzzle(puzzle)
 print('')
-update_options(puzzle)
-update_solution(solution)
+solution = puzzle
+keep_iterating = True
+while keep_iterating:
+    update_options(solution)
+    keep_iterating = update_solution(solution)
 print_puzzle(solution)
