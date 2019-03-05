@@ -1,4 +1,4 @@
-SODUKO SOLVER
+**Soduko-Solver**
 
 Summary
 =======
