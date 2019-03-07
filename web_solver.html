@@ -3,10 +3,34 @@
     <head>
         <title>Soduko-Solver</title>
         <style>
-            .sudoku-solver {
+            .sudoku-puzzle {
+                background-color: black;
+                width: 368px;
+                height: 368px;
                 display: grid;
-                grid-template-columns: 70px 70px 70px 70px 70px 70px 70px 70px 70px;
-                grid-template-rows: 70px 70px 70px 70px 70px 70px 70px 70px 70px;
+                grid-template-columns: 122px 122px 122px;
+                grid-template-rows: 122px 122px 122px;
+                grid-column-gap: 1px;
+                grid-row-gap: 1px;
+                padding: 1px;
+            }
+            .sudoku-square {
+                background-color: white;
+                color: black;
+                font-size: 16px;
+                width: 40px;
+                height: 40px;
+                border: none;
+            }
+            .sudoku-block {
+                background-color: #c0c0c0; /* HTML Silver */
+                width: 122px;
+                height: 122px;
+                display: grid;
+                grid-template-columns: 40px 40px 40px;
+                grid-template-rows: 40px 40px 40px;
+                grid-column-gap: 1px;
+                grid-row-gap: 1px;
             }
         </style>
     </head>
@@ -19,88 +43,106 @@
             <li>Underneath the mutually exclusive buttons will be a solve and clear button</li>
             <li>At the bottom of the page will be contact info and links to the author's portfolio</li>
         </ul>
-        <div class="sudoku-solver">
-            <button type="button" value="0,0"></button>
-            <button type="button" value="0,1"></button>
-            <button type="button" value="0,2"></button>
-            <button type="button" value="0,3"></button>
-            <button type="button" value="0,4"></button>
-            <button type="button" value="0,5"></button>
-            <button type="button" value="0,6"></button>
-            <button type="button" value="0,7"></button>
-            <button type="button" value="0,8"></button>
-            <button type="button" value="1,0"></button>
-            <button type="button" value="1,1"></button>
-            <button type="button" value="1,2"></button>
-            <button type="button" value="1,3"></button>
-            <button type="button" value="1,4"></button>
-            <button type="button" value="1,5"></button>
-            <button type="button" value="1,6"></button>
-            <button type="button" value="1,7"></button>
-            <button type="button" value="1,8"></button>
-            <button type="button" value="2,0"></button>
-            <button type="button" value="2,1"></button>
-            <button type="button" value="2,2"></button>
-            <button type="button" value="2,3"></button>
-            <button type="button" value="2,4"></button>
-            <button type="button" value="2,5"></button>
-            <button type="button" value="2,6"></button>
-            <button type="button" value="2,7"></button>
-            <button type="button" value="2,8"></button>
-            <button type="button" value="3,0"></button>
-            <button type="button" value="3,1"></button>
-            <button type="button" value="3,2"></button>
-            <button type="button" value="3,3"></button>
-            <button type="button" value="3,4"></button>
-            <button type="button" value="3,5"></button>
-            <button type="button" value="3,6"></button>
-            <button type="button" value="3,7"></button>
-            <button type="button" value="3,8"></button>
-            <button type="button" value="4,0"></button>
-            <button type="button" value="4,1"></button>
-            <button type="button" value="4,2"></button>
-            <button type="button" value="4,3"></button>
-            <button type="button" value="4,4"></button>
-            <button type="button" value="4,5"></button>
-            <button type="button" value="4,6"></button>
-            <button type="button" value="4,7"></button>
-            <button type="button" value="4,8"></button>
-            <button type="button" value="5,0"></button>
-            <button type="button" value="5,1"></button>
-            <button type="button" value="5,2"></button>
-            <button type="button" value="5,3"></button>
-            <button type="button" value="5,4"></button>
-            <button type="button" value="5,5"></button>
-            <button type="button" value="5,6"></button>
-            <button type="button" value="5,7"></button>
-            <button type="button" value="5,8"></button>
-            <button type="button" value="6,0"></button>
-            <button type="button" value="6,1"></button>
-            <button type="button" value="6,2"></button>
-            <button type="button" value="6,3"></button>
-            <button type="button" value="6,4"></button>
-            <button type="button" value="6,5"></button>
-            <button type="button" value="6,6"></button>
-            <button type="button" value="6,7"></button>
-            <button type="button" value="6,8"></button>
-            <button type="button" value="7,0"></button>
-            <button type="button" value="7,1"></button>
-            <button type="button" value="7,2"></button>
-            <button type="button" value="7,3"></button>
-            <button type="button" value="7,4"></button>
-            <button type="button" value="7,5"></button>
-            <button type="button" value="7,6"></button>
-            <button type="button" value="7,7"></button>
-            <button type="button" value="7,8"></button>
-            <button type="button" value="8,0"></button>
-            <button type="button" value="8,1"></button>
-            <button type="button" value="8,2"></button>
-            <button type="button" value="8,3"></button>
-            <button type="button" value="8,4"></button>
-            <button type="button" value="8,5"></button>
-            <button type="button" value="8,6"></button>
-            <button type="button" value="8,7"></button>
-            <button type="button" value="8,8"></button>
+        <div class="sudoku-puzzle">
+            <div class="sudoku-block">
+                <button class="sudoku-square" value="0,0">1</button>
+                <button class="sudoku-square" value="0,1">2</button>
+                <button class="sudoku-square" value="0,2">3</button>
+                <button class="sudoku-square" value="1,0">4</button>
+                <button class="sudoku-square" value="1,1">5</button>
+                <button class="sudoku-square" value="1,3">6</button>
+                <button class="sudoku-square" value="2,0">7</button>
+                <button class="sudoku-square" value="2,1">8</button>
+                <button class="sudoku-square" value="2,2">9</button>
+            </div>
+            <div class="sudoku-block">
+                <button class="sudoku-square" value="0,0"></button>
+                <button class="sudoku-square" value="0,1"></button>
+                <button class="sudoku-square" value="0,2"></button>
+                <button class="sudoku-square" value="1,0"></button>
+                <button class="sudoku-square" value="1,1"></button>
+                <button class="sudoku-square" value="1,3"></button>
+                <button class="sudoku-square" value="2,0"></button>
+                <button class="sudoku-square" value="2,1"></button>
+                <button class="sudoku-square" value="2,2"></button>
+            </div>
+            <div class="sudoku-block">
+                <button class="sudoku-square" value="0,0"></button>
+                <button class="sudoku-square" value="0,1"></button>
+                <button class="sudoku-square" value="0,2"></button>
+                <button class="sudoku-square" value="1,0"></button>
+                <button class="sudoku-square" value="1,1"></button>
+                <button class="sudoku-square" value="1,3"></button>
+                <button class="sudoku-square" value="2,0"></button>
+                <button class="sudoku-square" value="2,1"></button>
+                <button class="sudoku-square" value="2,2"></button>
+            </div>
+            <div class="sudoku-block">
+                <button class="sudoku-square" value="0,0"></button>
+                <button class="sudoku-square" value="0,1"></button>
+                <button class="sudoku-square" value="0,2"></button>
+                <button class="sudoku-square" value="1,0"></button>
+                <button class="sudoku-square" value="1,1"></button>
+                <button class="sudoku-square" value="1,3"></button>
+                <button class="sudoku-square" value="2,0"></button>
+                <button class="sudoku-square" value="2,1"></button>
+                <button class="sudoku-square" value="2,2"></button>
+            </div>
+            <div class="sudoku-block">
+                <button class="sudoku-square" value="0,0"></button>
+                <button class="sudoku-square" value="0,1"></button>
+                <button class="sudoku-square" value="0,2"></button>
+                <button class="sudoku-square" value="1,0"></button>
+                <button class="sudoku-square" value="1,1"></button>
+                <button class="sudoku-square" value="1,3"></button>
+                <button class="sudoku-square" value="2,0"></button>
+                <button class="sudoku-square" value="2,1"></button>
+                <button class="sudoku-square" value="2,2"></button>
+            </div>
+            <div class="sudoku-block">
+                <button class="sudoku-square" value="0,0"></button>
+                <button class="sudoku-square" value="0,1"></button>
+                <button class="sudoku-square" value="0,2"></button>
+                <button class="sudoku-square" value="1,0"></button>
+                <button class="sudoku-square" value="1,1"></button>
+                <button class="sudoku-square" value="1,3"></button>
+                <button class="sudoku-square" value="2,0"></button>
+                <button class="sudoku-square" value="2,1"></button>
+                <button class="sudoku-square" value="2,2"></button>
+            </div>
+            <div class="sudoku-block">
+                <button class="sudoku-square" value="0,0"></button>
+                <button class="sudoku-square" value="0,1"></button>
+                <button class="sudoku-square" value="0,2"></button>
+                <button class="sudoku-square" value="1,0"></button>
+                <button class="sudoku-square" value="1,1"></button>
+                <button class="sudoku-square" value="1,3"></button>
+                <button class="sudoku-square" value="2,0"></button>
+                <button class="sudoku-square" value="2,1"></button>
+                <button class="sudoku-square" value="2,2"></button>
+            </div>
+            <div class="sudoku-block">
+                <button class="sudoku-square" value="0,0"></button>
+                <button class="sudoku-square" value="0,1"></button>
+                <button class="sudoku-square" value="0,2"></button>
+                <button class="sudoku-square" value="1,0"></button>
+                <button class="sudoku-square" value="1,1"></button>
+                <button class="sudoku-square" value="1,3"></button>
+                <button class="sudoku-square" value="2,0"></button>
+                <button class="sudoku-square" value="2,1"></button>
+                <button class="sudoku-square" value="2,2"></button>
+            </div>
+            <div class="sudoku-block">
+                <button class="sudoku-square" value="0,0"></button>
+                <button class="sudoku-square" value="0,1"></button>
+                <button class="sudoku-square" value="0,2"></button>
+                <button class="sudoku-square" value="1,0"></button>
+                <button class="sudoku-square" value="1,1"></button>
+                <button class="sudoku-square" value="1,3"></button>
+                <button class="sudoku-square" value="2,0"></button>
+                <button class="sudoku-square" value="2,1"></button>
+                <button class="sudoku-square" value="2,2"></button>
+            </div>
         </div>
     </body>
 </html>
