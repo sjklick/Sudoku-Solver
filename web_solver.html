@@ -40,7 +40,16 @@
                 grid-column-gap: 1px;
                 padding: 1px;
             }
-            .value-square {
+            .value-button-unselected {
+                border: none;
+                background-color: #c0c0c0; /* HTML Silver */
+                color: black;
+                font-size: 16px;
+                width: 40px;
+                height: 40px;
+            }
+            .value-button-selected {
+                border: 1px solid black;
                 background-color: #c0c0c0; /* HTML Silver */
                 color: black;
                 font-size: 16px;
@@ -60,125 +69,131 @@
             <li>At the bottom of the page will be contact info and links to the author's portfolio</li>
         </ul>
         <div class="sudoku-puzzle">
-            <div class="sudoku-block" name="0,0">
-                <button class="sudoku-square" name="0,0">1</button>
-                <button class="sudoku-square" name="0,1">2</button>
-                <button class="sudoku-square" name="0,2">3</button>
-                <button class="sudoku-square" name="1,0">4</button>
-                <button class="sudoku-square" name="1,1">5</button>
-                <button class="sudoku-square" name="1,2">6</button>
-                <button class="sudoku-square" name="2,0">7</button>
-                <button class="sudoku-square" name="2,1">8</button>
-                <button class="sudoku-square" name="2,2">9</button>
+            <div class="sudoku-block" id="0,0">
+                <button class="sudoku-square" id="0,0">1</button>
+                <button class="sudoku-square" id="0,1">2</button>
+                <button class="sudoku-square" id="0,2">3</button>
+                <button class="sudoku-square" id="1,0">4</button>
+                <button class="sudoku-square" id="1,1">5</button>
+                <button class="sudoku-square" id="1,2">6</button>
+                <button class="sudoku-square" id="2,0">7</button>
+                <button class="sudoku-square" id="2,1">8</button>
+                <button class="sudoku-square" id="2,2">9</button>
             </div>
-            <div class="sudoku-block" name="0,1">
-                <button class="sudoku-square" name="0,3"></button>
-                <button class="sudoku-square" name="0,4"></button>
-                <button class="sudoku-square" name="0,5"></button>
-                <button class="sudoku-square" name="1,3"></button>
-                <button class="sudoku-square" name="1,4"></button>
-                <button class="sudoku-square" name="1,5"></button>
-                <button class="sudoku-square" name="2,3"></button>
-                <button class="sudoku-square" name="2,4"></button>
-                <button class="sudoku-square" name="2,5"></button>
+            <div class="sudoku-block" id="0,1">
+                <button class="sudoku-square" id="0,3"></button>
+                <button class="sudoku-square" id="0,4"></button>
+                <button class="sudoku-square" id="0,5"></button>
+                <button class="sudoku-square" id="1,3"></button>
+                <button class="sudoku-square" id="1,4"></button>
+                <button class="sudoku-square" id="1,5"></button>
+                <button class="sudoku-square" id="2,3"></button>
+                <button class="sudoku-square" id="2,4"></button>
+                <button class="sudoku-square" id="2,5"></button>
             </div>
-            <div class="sudoku-block" name="0,2">
-                <button class="sudoku-square" name="0,6"></button>
-                <button class="sudoku-square" name="0,7"></button>
-                <button class="sudoku-square" name="0,8"></button>
-                <button class="sudoku-square" name="1,6"></button>
-                <button class="sudoku-square" name="1,7"></button>
-                <button class="sudoku-square" name="1,8"></button>
-                <button class="sudoku-square" name="2,6"></button>
-                <button class="sudoku-square" name="2,7"></button>
-                <button class="sudoku-square" name="2,8"></button>
+            <div class="sudoku-block" id="0,2">
+                <button class="sudoku-square" id="0,6"></button>
+                <button class="sudoku-square" id="0,7"></button>
+                <button class="sudoku-square" id="0,8"></button>
+                <button class="sudoku-square" id="1,6"></button>
+                <button class="sudoku-square" id="1,7"></button>
+                <button class="sudoku-square" id="1,8"></button>
+                <button class="sudoku-square" id="2,6"></button>
+                <button class="sudoku-square" id="2,7"></button>
+                <button class="sudoku-square" id="2,8"></button>
             </div>
-            <div class="sudoku-block" name="1,0">
-                <button class="sudoku-square" name="3,0"></button>
-                <button class="sudoku-square" name="3,1"></button>
-                <button class="sudoku-square" name="3,2"></button>
-                <button class="sudoku-square" name="4,0"></button>
-                <button class="sudoku-square" name="4,1"></button>
-                <button class="sudoku-square" name="4,2"></button>
-                <button class="sudoku-square" name="5,0"></button>
-                <button class="sudoku-square" name="5,1"></button>
-                <button class="sudoku-square" name="5,2"></button>
+            <div class="sudoku-block" id="1,0">
+                <button class="sudoku-square" id="3,0"></button>
+                <button class="sudoku-square" id="3,1"></button>
+                <button class="sudoku-square" id="3,2"></button>
+                <button class="sudoku-square" id="4,0"></button>
+                <button class="sudoku-square" id="4,1"></button>
+                <button class="sudoku-square" id="4,2"></button>
+                <button class="sudoku-square" id="5,0"></button>
+                <button class="sudoku-square" id="5,1"></button>
+                <button class="sudoku-square" id="5,2"></button>
             </div>
-            <div class="sudoku-block" name="1,1">
-                <button class="sudoku-square" name="3,3"></button>
-                <button class="sudoku-square" name="3,4"></button>
-                <button class="sudoku-square" name="3,5"></button>
-                <button class="sudoku-square" name="4,3"></button>
-                <button class="sudoku-square" name="4,4"></button>
-                <button class="sudoku-square" name="4,5"></button>
-                <button class="sudoku-square" name="5,3"></button>
-                <button class="sudoku-square" name="5,4"></button>
-                <button class="sudoku-square" name="5,5"></button>
+            <div class="sudoku-block" id="1,1">
+                <button class="sudoku-square" id="3,3"></button>
+                <button class="sudoku-square" id="3,4"></button>
+                <button class="sudoku-square" id="3,5"></button>
+                <button class="sudoku-square" id="4,3"></button>
+                <button class="sudoku-square" id="4,4"></button>
+                <button class="sudoku-square" id="4,5"></button>
+                <button class="sudoku-square" id="5,3"></button>
+                <button class="sudoku-square" id="5,4"></button>
+                <button class="sudoku-square" id="5,5"></button>
             </div>
-            <div class="sudoku-block" name="1,2">
-                <button class="sudoku-square" name="3,6"></button>
-                <button class="sudoku-square" name="3,7"></button>
-                <button class="sudoku-square" name="3,8"></button>
-                <button class="sudoku-square" name="4,6"></button>
-                <button class="sudoku-square" name="4,7"></button>
-                <button class="sudoku-square" name="4,8"></button>
-                <button class="sudoku-square" name="5,6"></button>
-                <button class="sudoku-square" name="5,7"></button>
-                <button class="sudoku-square" name="5,8"></button>
+            <div class="sudoku-block" id="1,2">
+                <button class="sudoku-square" id="3,6"></button>
+                <button class="sudoku-square" id="3,7"></button>
+                <button class="sudoku-square" id="3,8"></button>
+                <button class="sudoku-square" id="4,6"></button>
+                <button class="sudoku-square" id="4,7"></button>
+                <button class="sudoku-square" id="4,8"></button>
+                <button class="sudoku-square" id="5,6"></button>
+                <button class="sudoku-square" id="5,7"></button>
+                <button class="sudoku-square" id="5,8"></button>
             </div>
-            <div class="sudoku-block" name="2,0">
-                <button class="sudoku-square" name="6,0"></button>
-                <button class="sudoku-square" name="6,1"></button>
-                <button class="sudoku-square" name="6,2"></button>
-                <button class="sudoku-square" name="7,0"></button>
-                <button class="sudoku-square" name="7,1"></button>
-                <button class="sudoku-square" name="7,2"></button>
-                <button class="sudoku-square" name="8,0"></button>
-                <button class="sudoku-square" name="8,1"></button>
-                <button class="sudoku-square" name="8,2"></button>
+            <div class="sudoku-block" id="2,0">
+                <button class="sudoku-square" id="6,0"></button>
+                <button class="sudoku-square" id="6,1"></button>
+                <button class="sudoku-square" id="6,2"></button>
+                <button class="sudoku-square" id="7,0"></button>
+                <button class="sudoku-square" id="7,1"></button>
+                <button class="sudoku-square" id="7,2"></button>
+                <button class="sudoku-square" id="8,0"></button>
+                <button class="sudoku-square" id="8,1"></button>
+                <button class="sudoku-square" id="8,2"></button>
             </div>
-            <div class="sudoku-block" name="2,1">
-                <button class="sudoku-square" name="6,3"></button>
-                <button class="sudoku-square" name="6,4"></button>
-                <button class="sudoku-square" name="6,5"></button>
-                <button class="sudoku-square" name="7,3"></button>
-                <button class="sudoku-square" name="7,4"></button>
-                <button class="sudoku-square" name="7,5"></button>
-                <button class="sudoku-square" name="8,3"></button>
-                <button class="sudoku-square" name="8,4"></button>
-                <button class="sudoku-square" name="8,5"></button>
+            <div class="sudoku-block" id="2,1">
+                <button class="sudoku-square" id="6,3"></button>
+                <button class="sudoku-square" id="6,4"></button>
+                <button class="sudoku-square" id="6,5"></button>
+                <button class="sudoku-square" id="7,3"></button>
+                <button class="sudoku-square" id="7,4"></button>
+                <button class="sudoku-square" id="7,5"></button>
+                <button class="sudoku-square" id="8,3"></button>
+                <button class="sudoku-square" id="8,4"></button>
+                <button class="sudoku-square" id="8,5"></button>
             </div>
-            <div class="sudoku-block" name="2,2">
-                <button class="sudoku-square" name="6,6"></button>
-                <button class="sudoku-square" name="6,7"></button>
-                <button class="sudoku-square" name="6,8"></button>
-                <button class="sudoku-square" name="7,6"></button>
-                <button class="sudoku-square" name="7,7"></button>
-                <button class="sudoku-square" name="7,8"></button>
-                <button class="sudoku-square" name="8,6"></button>
-                <button class="sudoku-square" name="8,7"></button>
-                <button class="sudoku-square" name="8,8"></button>
+            <div class="sudoku-block" id="2,2">
+                <button class="sudoku-square" id="6,6"></button>
+                <button class="sudoku-square" id="6,7"></button>
+                <button class="sudoku-square" id="6,8"></button>
+                <button class="sudoku-square" id="7,6"></button>
+                <button class="sudoku-square" id="7,7"></button>
+                <button class="sudoku-square" id="7,8"></button>
+                <button class="sudoku-square" id="8,6"></button>
+                <button class="sudoku-square" id="8,7"></button>
+                <button class="sudoku-square" id="8,8"></button>
             </div>
         </div>
         <div class="value-options">
-            <button class="value-square" name="1">1</button>
-            <button class="value-square" name="2">2</button>
-            <button class="value-square" name="3">3</button>
-            <button class="value-square" name="4">4</button>
-            <button class="value-square" name="5">5</button>
-            <button class="value-square" name="6">6</button>
-            <button class="value-square" name="7">7</button>
-            <button class="value-square" name="8">8</button>
-            <button class="value-square" name="9">9</button>
+            <button class="value-button-selected" id="1" onclick="value_select(this);">1</button>
+            <button class="value-button-unselected" id="2" onclick="value_select(this);">2</button>
+            <button class="value-button-unselected" id="3" onclick="value_select(this);">3</button>
+            <button class="value-button-unselected" id="4" onclick="value_select(this);">4</button>
+            <button class="value-button-unselected" id="5" onclick="value_select(this);">5</button>
+            <button class="value-button-unselected" id="6" onclick="value_select(this);">6</button>
+            <button class="value-button-unselected" id="7" onclick="value_select(this);">7</button>
+            <button class="value-button-unselected" id="8" onclick="value_select(this);">8</button>
+            <button class="value-button-unselected" id="9" onclick="value_select(this);">9</button>
         </div>
-        <button name="clear" onclick="clear_grid();">Clear</button>
+        <button id="clear" onclick="clear_grid();">Clear</button>
         <script type="text/javascript">
+            var value_selection = 1;
             function clear_grid() {
                 var sudoku_square = document.getElementsByClassName("sudoku-square");
                 var square_index;
                 for (square_index = 0; square_index < 9*9; square_index++) {
                     sudoku_square[square_index].innerText = "";
                 }
+            }
+            function value_select(value_button) {
+                document.getElementsByClassName("value-button-selected")[0].className = "value-button-unselected";
+                value_button.className = "value-button-selected";
+                value_selection = parseInt(value_button.id);
             }
         </script>
     </body>
