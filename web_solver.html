@@ -315,6 +315,20 @@
                     }
                 }
             }
+            function update_solution(options, puzzle) {
+                modified = false;
+                for (row=0; row<9; row++) {
+                    for (column=0; column<9; column++) {
+                        if (options.square[row][column].length == 1) {
+                            if (puzzle[row][column] == "") {
+                                puzzle[row][column] = options.square[row][column][0];
+                                modified = true;
+                            }
+                        }
+                    }
+                }
+                return modified;
+            }
             function solve() {
                 var grid = [];
                 var row, column;
@@ -330,7 +344,17 @@
                     grid[row][column] = sudoku_square[square_index].innerText;
                 }
                 option = get_initial_options();
-                update_options(option, grid);
+                var keep_iterating = true;
+                while (keep_iterating) {
+                    update_options(option, grid);
+                    keep_iterating = update_solution(option, grid);
+                }
+                for (square_index=0; square_index<9*9; square_index++) {
+                    id_string = sudoku_square[square_index].id;
+                    row = parseInt(id_string[0]);
+                    column = parseInt(id_string[2]);
+                    sudoku_square[square_index].innerText = grid[row][column];
+                }
             }
         </script>
     </body>
