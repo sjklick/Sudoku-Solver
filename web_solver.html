@@ -181,6 +181,7 @@
             <button class="value-button-unselected" id="9" onclick="value_select(this);">9</button>
         </div>
         <button id="clear" onclick="clear_grid();">Clear</button>
+        <button id="solve" onclick="solve();">Solve</button>
         <script type="text/javascript">
             var value_selection = 1;
             function clear_grid() {
@@ -200,6 +201,22 @@
                     sudoku_square.innerText = value_selection.toString();
                 } else {
                     sudoku_square.innerText = "";
+                }
+            }
+            function solve() {
+                var grid = [];
+                var row, column;
+                for (row = 0; row < 9; row++) {
+                    grid[row] = [];
+                }
+                var sudoku_square = document.getElementsByClassName("sudoku-square");
+                var square_index, id_string;
+                for (square_index = 0; square_index < 9*9; square_index++) {
+                    id_string = sudoku_square[square_index].id;
+                    row = parseInt(id_string[0]);
+                    column = parseInt(id_string[2]);
+                    grid[row][column] = sudoku_square[square_index].innerText;
+                    console.log("["+row.toString()+"]["+column.toString()+"] = "+grid[row][column]);
                 }
             }
         </script>
