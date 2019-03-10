@@ -202,20 +202,6 @@
                 }
             }
 
-            function is_puzzle_grid_full(options) {
-                var full = true;
-                var row, column;
-                for (row=0; row<9; row++) {
-                    for (column=0; column<9; column++) {
-                        if (options[row][column].length != 1) {
-                            full = false;
-                            break;
-                        }
-                    }
-                }
-                return full;
-            }
-
             function options_from_document() {
                 var options, row, column, square, index, id_string, value;
                 options = [];
@@ -403,13 +389,58 @@
                 }
             }
 
-            function solve() {
-                var options, keep_iterating;
-                options = options_from_document();
+            function is_puzzle_grid_full(options) {
+                var row, column;
+                for (row=0; row<9; row++) {
+                    for (column=0; column<9; column++) {
+                        if (options[row][column].length != 1) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            function recursive_solve(options) {
+                var row, column, keep_iterating, index, temp_options, value;
+                /* Reduce options as much as possible using basic soduko rules. */
                 keep_iterating = true;
                 while (keep_iterating) {
                     keep_iterating = update_options(options);
                 }
+                /* Check if the puzzle grid is completely filled. */
+                if (is_puzzle_grid_full(options)) {
+                    return options;
+                }
+                /* Select the first square with multiple options. */
+                for (row=0; row<9; row++) {
+                    for (column=0; column<9; column++) {
+                        if (options[row][column].length > 1) {
+                            /* For each option in the square, call this function using
+                            each possible option. Work on a copy of the options. */
+                            for (index=0; index<options[row][column].length; index++) {
+                                value = options[row][column][index];
+                                temp_options = options.slice();
+                                temp_options[row][column] = [];
+                                temp_options[row][column].push(value);
+                                temp_options = recursive_solve(temp_options);
+                                /* Check if the puzzle grid is completely filled. */
+                                if (is_puzzle_grid_full(temp_options)) {
+                                    return temp_options;
+                                }
+                            }
+                        }
+                    }
+                }
+                /* If the puzzle is valid, should never get here, but just in case... */
+                console.log("shouldnt be here");
+                return options;
+            }
+
+            function solve() {
+                var options, keep_iterating;
+                options = options_from_document();
+                options = recursive_solve(options);
                 options_to_document(options);
             }
         </script>
