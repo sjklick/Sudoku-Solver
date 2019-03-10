@@ -4,9 +4,8 @@ Summary
 =======
 
 This is an implementation of a solver for the popular Soduku puzzle,
-developed for pedagogical purposes. The algorithm is prototyped in
-Python 3.5.2, with the intent of translating the algorithm to a
-javascript based web-solver.
+developed for pedagogical purposes. The application is written in HTML
+with Javascript.
 
 Program Explanation
 ===================
@@ -22,17 +21,7 @@ iteration no longer results in a change to the solution.
 Executing
 =========
 
-To run the main script from Bash:
-$ python solver.py
-
-To run the test script from Bash:
-$ python test_update_options.py
-
-Currently, the puzzle to be solved is contained in the 'puzzle'
-variable in solver.py, and can be adjusted there before executing
-the main script. test_update_options.py is used to visually inspect
-the behaviour of an iteration of the update_options function, which
-is the core of the algorithm.
+Open sudoku-solver.html in a web browser.
 
 Author
 ======
