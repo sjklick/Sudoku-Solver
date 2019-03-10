@@ -202,186 +202,12 @@
                 }
             }
 
-            function get_initial_options() {
-                var row, column,value;
-                var row_options = [];
-                for (row=0; row<9; row++) {
-                    row_options[row] = [];
-                    for (value=1; value<10; value++) {
-                        row_options[row].push(parseInt(value));
-                    }
-                }
-                var column_options = [];
-                for (column=0; column<9; column++) {
-                    column_options[column] = [];
-                    for (value=1; value<10; value++) {
-                        column_options[column].push(parseInt(value));
-                    }
-                }
-                var block_options = [];
-                for (row=0; row<3; row++) {
-                    block_options[row] = [];
-                    for (column=0; column<3; column++) {
-                        block_options[row][column] = [];
-                        for (value=1; value<10; value++) {
-                            block_options[row][column].push(parseInt(value));
-                        }
-                    }
-                }
-                var square_options = [];
-                for (row=0; row<9; row++) {
-                    square_options[row] = [];
-                    for (column=0; column<9; column++) {
-                        square_options[row][column] = [];
-                        for (value=1; value<10; value++) {
-                            square_options[row][column].push(parseInt(value));
-                        }
-                    }
-                }
-                return {
-                    row: row_options,
-                    column: column_options,
-                    block: block_options,
-                    square: square_options
-                };
-            }
-
-            function update_options(options, puzzle) {
-                var row, column, block_row, block_column, value, array_index;
-                for (row=0; row<9; row++) {
-                    for (column=0; column<9; column++) {
-                        value = puzzle[row][column];
-                        if (value != "") {
-                            for (array_index=0; array_index<options.row[row].length; array_index++) {
-                                if (options.row[row][array_index] == value) {
-                                    options.row[row].splice(array_index, 1);
-                                    break;
-                                }
-                            }
-                            for (array_index=0; array_index<options.column[column].length; array_index++) {
-                                if (options.column[column][array_index] == value) {
-                                    options.column[column].splice(array_index, 1);
-                                    break;
-                                }
-                            }
-                            block_row = Math.trunc(row/3);
-                            block_column = Math.trunc(column/3);
-                            for (array_index=0; array_index<options.block[block_row][block_column].length; array_index++) {
-                                if (options.block[block_row][block_column][array_index] == value) {
-                                    options.block[block_row][block_column].splice(array_index, 1);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                var is_row_option, is_column_option, is_block_option, option_index;
-                for (row=0; row<9; row++) {
-                    for (column=0; column<9; column++) {
-                        block_row = Math.trunc(row/3);
-                        block_column = Math.trunc(column/3);
-                        for (value=1; value<10; value++) {
-                            is_row_option = false;
-                            for (option_index=0; option_index<options.row[row].length; option_index++) {
-                                if (options.row[row][option_index] == value.toString()) {
-                                    is_row_option = true;
-                                    break;
-                                }
-                            }
-                            is_column_option = false;
-                            for (option_index=0; option_index<options.column[column].length; option_index++) {
-                                if (options.column[column][option_index] == value.toString()) {
-                                    is_column_option = true;
-                                    break;
-                                }
-                            }
-                            is_block_option = false;
-                            for (option_index=0; option_index<options.block[block_row][block_column].length; option_index++) {
-                                if (options.block[block_row][block_column][option_index] == value.toString()) {
-                                    is_block_option = true;
-                                    break;
-                                }
-                            }
-                            if (!(is_row_option && is_column_option && is_block_option)) {
-                                for (array_index=0; array_index<options.square[row][column].length; array_index++) {
-                                    if (options.square[row][column][array_index] == value.toString()) {
-                                        options.square[row][column].splice(array_index, 1);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                for (row=0; row<9; row++) {
-                    for (column=0; column<9; column++) {
-                        value = puzzle[row][column];
-                        if (value != "") {
-                            options.square[row][column] = [];
-                            options.square[row][column].push(value);
-                        }
-                    }
-                }
-            }
-
-            function update_solution(options, puzzle) {         
-                var row, column, modified;
-                modified = false;
-                for (row=0; row<9; row++) {
-                    for (column=0; column<9; column++) {
-                        if (options.square[row][column].length == 1) {
-                            if (puzzle[row][column] == "") {
-                                puzzle[row][column] = options.square[row][column][0];
-                                modified = true;
-                            }
-                        }
-                    }
-                }
-                return modified;
-            }
-
-            function print_options(options) {
-                var row, column, console_str, index;
-                for (row=0; row<9; row++) {
-                    console_str="row["+row.toString()+"]:";
-                    for (index=0; index<options.row[row].length; index++) {
-                        console_str=console_str+" "+options.row[row][index];
-                    }
-                    console.log(console_str);
-                }
-                for (column=0; column<9; column++) {
-                    console_str="column["+column.toString()+"]:";
-                    for (index=0; index<options.column[column].length; index++) {
-                        console_str=console_str+" "+options.column[column][index];
-                    }
-                    console.log(console_str);
-                }
-                for (row=0; row<3; row++) {
-                    for (column=0; column<3; column++) {
-                        console_str="block["+row.toString()+"]["+column.toString()+"]:";
-                        for (index=0; index<options.block[row][column].length; index++) {
-                            console_str=console_str+" "+options.block[row][column][index];
-                        }
-                        console.log(console_str);
-                    }
-                }
-                for (row=0; row<9; row++) {
-                    for (column=0; column<9; column++) {
-                        console_str="square["+row.toString()+"]["+column.toString()+"]:";
-                        for (index=0; index<options.square[row][column].length; index++) {
-                            console_str=console_str+" "+options.square[row][column][index];
-                        }
-                        console.log(console_str);
-                    }
-                }
-            }
-
-            function is_puzzle_grid_full(puzzle) {
+            function is_puzzle_grid_full(options) {
                 var full = true;
                 var row, column;
                 for (row=0; row<9; row++) {
                     for (column=0; column<9; column++) {
-                        if (puzzle[row][column] == "") {
+                        if (options[row][column].length != 1) {
                             full = false;
                             break;
                         }
@@ -390,32 +216,201 @@
                 return full;
             }
 
-            function solve() {
-                var grid = [];
-                var row, column;
+            function options_from_document() {
+                var options, row, column, square, index, id_string, value;
+                options = [];
                 for (row=0; row<9; row++) {
-                    grid[row] = [];
+                    options[row] = [];
+                    for (column=0; column<9; column++) {
+                        options[row][column] = [];
+                    }
                 }
-                var sudoku_square = document.getElementsByClassName("sudoku-square");
-                var square_index, id_string;
-                for (square_index=0; square_index<9*9; square_index++) {
-                    id_string = sudoku_square[square_index].id;
+                square = document.getElementsByClassName("sudoku-square");
+                for (index=0; index<9*9; index++) {
+                    id_string = square[index].id;
                     row = parseInt(id_string[0]);
                     column = parseInt(id_string[2]);
-                    grid[row][column] = sudoku_square[square_index].innerText;
+                    if (square[index].innerText == "") {
+                        for (value=1; value<10; value++) {
+                            options[row][column].push(value.toString());
+                        }
+                    } else {
+                        options[row][column] = square[index].innerText;
+                    }
                 }
-                option = get_initial_options();             
-                var keep_iterating = true;
+                return options;
+            }
+
+            function get_row_options(options) {
+                var row_options, row, column, index, value;
+                row_options = [];
+                for (row=0; row<9; row++) {
+                    row_options[row] = [];
+                    for (value=1; value<10; value++) {
+                        row_options[row].push(value.toString());
+                    }
+                }
+                for (row=0; row<9; row++) {
+                    for (column=0; column<9; column++) {
+                        if (options[row][column].length == 1) {
+                            value = options[row][column][0];
+                            for (index=0; index<row_options[row].length; index++) {
+                                if (row_options[row][index] == value) {
+                                    row_options[row].splice(index, 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                return row_options;
+            }
+
+            function get_column_options(options) {
+                var column_options, row, column, index, value;
+                column_options = [];
+                for (column=0; column<9; column++) {
+                    column_options[column] = [];
+                    for (value=1; value<10; value++) {
+                        column_options[column].push(value.toString());
+                    }
+                }
+                for (column=0; column<9; column++) {
+                    for (row=0; row<9; row++) {
+                        if (options[row][column].length == 1) {
+                            value = options[row][column][0];
+                            for (index=0; index<column_options[column].length; index++) {
+                                if (column_options[column][index] == value) {
+                                    column_options[column].splice(index, 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                return column_options;
+            }
+
+            function get_block_options(options) {
+                var block_options, row, column, block_row, block_column;
+                block_options = [];
+                for (block_row=0; block_row<3; block_row++) {
+                    block_options[block_row] = [];
+                    for (block_column=0; block_column<3; block_column++) {
+                        block_options[block_row][block_column] = [];
+                        for (value=1; value<10; value++) {
+                            block_options[block_row][block_column].push(value.toString());
+                        }
+                    }
+                }
+                for (row=0; row<9; row++) {
+                    for (column=0; column<9; column++) {
+                        if (options[row][column].length == 1) {
+                            value = options[row][column][0];
+                            block_row = Math.trunc(row/3);
+                            block_column = Math.trunc(column/3);
+                            for (index=0; index<block_options[block_row][block_column].length; index++) {
+                                if (block_options[block_row][block_column][index] == value) {
+                                    block_options[block_row][block_column].splice(index, 1);
+                                }
+                            }
+                        }
+                    }
+                }
+                return block_options;
+            }
+
+            function is_row_option(row_options, row, value) {
+                var index, is_option;
+                is_option = false;
+                for (index=0; index<row_options[row].length; index++) {
+                    if (row_options[row][index] == value) {
+                        is_option = true;
+                        break;
+                    }
+                }
+                return is_option;
+            }
+
+            function is_column_option(column_options, column, value) {
+                var index, is_option;
+                is_option = false;
+                for (index=0; index<column_options[column].length; index++) {
+                    if (column_options[column][index] == value) {
+                        is_option = true;
+                        break;
+                    }
+                }
+                return is_option;
+            }
+
+            function is_block_option(block_options, row, column, value) {
+                var block_row, block_column;
+                is_option = false;
+                block_row = Math.trunc(row/3);
+                block_column = Math.trunc(column/3);
+                for (index=0; index<block_options[block_row][block_column].length; index++) {
+                    if (block_options[block_row][block_column][index] == value) {
+                        is_option = true;
+                        break;
+                    }
+                }
+                return is_option;
+            }
+
+            function update_options(options) {
+                var row, column, index, value, row_options, column_options, block_options;
+                var row_opt, col_opt, blk_opt, modified;
+                modified = false;
+                row_options = get_row_options(options);
+                column_options = get_column_options(options);
+                block_options = get_block_options(options);
+                for (row=0; row<9; row++) {
+                    for (column=0; column<9; column++) {
+                        if (options[row][column].length > 1) {
+                            for (value=1; value<10; value++) {
+                                row_opt = is_row_option(row_options, row, value.toString());
+                                col_opt = is_column_option(column_options, column, value.toString());
+                                blk_opt = is_block_option(block_options, row, column, value.toString());
+                                if (!(row_opt && col_opt && blk_opt)) {
+                                    for (index=0; index<options[row][column].length; index++) {
+                                        if (options[row][column][index] == value.toString()) {
+                                            options[row][column].splice(index, 1);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            if (options[row][column].length == 1) {
+                                modified = true;
+                            }
+                        }
+                    }
+                }
+                return modified;
+            }
+
+            function options_to_document(options) {
+                var row, column, square, index, id_string;
+                square = document.getElementsByClassName("sudoku-square");
+                for (index=0; index<9*9; index++) {
+                    id_string = square[index].id;
+                    row = parseInt(id_string[0]);
+                    column = parseInt(id_string[2]);
+                    if (options[row][column].length == 1) {
+                        square[index].innerText = options[row][column][0];
+                    } else {
+                        square[index].innerText = "";
+                    }
+                }
+            }
+
+            function solve() {
+                var options, keep_iterating;
+                options = options_from_document();
+                keep_iterating = true;
                 while (keep_iterating) {
-                    update_options(option, grid);
-                    keep_iterating = update_solution(option, grid);
+                    keep_iterating = update_options(options);
                 }
-                for (square_index=0; square_index<9*9; square_index++) {
-                    id_string = sudoku_square[square_index].id;
-                    row = parseInt(id_string[0]);
-                    column = parseInt(id_string[2]);
-                    sudoku_square[square_index].innerText = grid[row][column];
-                }
+                options_to_document(options);
             }
         </script>
     </body>
