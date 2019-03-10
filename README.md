@@ -13,7 +13,7 @@ Program Explanation
 The core algorithm currently evaluates each square of the solution,
 which is initially the same as the input puzzle. For each square,
 it checks which numbers (1-9 inclusive) are available for use based
-on the corresponding row, column, and 3x3 block. If the interesection
+on the corresponding row, column, and 3x3 block. If the intersection
 of these options reduces to a single option, the solution is updated
 for that square. This algorithm is iterated over the puzzle until an
 iteration no longer results in a change to the solution.
