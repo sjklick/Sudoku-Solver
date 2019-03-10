@@ -179,6 +179,7 @@
         </p>
         <script type="text/javascript">
             var value_selection = 1;
+
             function clear_grid() {
                 var sudoku_square = document.getElementsByClassName("sudoku-square");
                 var square_index;
@@ -186,11 +187,13 @@
                     sudoku_square[square_index].innerText = "";
                 }
             }
+
             function value_select(value_button) {
                 document.getElementsByClassName("value-button-selected")[0].className = "value-button-unselected";
                 value_button.className = "value-button-selected";
                 value_selection = parseInt(value_button.id);
             }
+
             function enter_value(sudoku_square) {
                 if (sudoku_square.innerText == "") {
                     sudoku_square.innerText = value_selection.toString();
@@ -198,8 +201,9 @@
                     sudoku_square.innerText = "";
                 }
             }
+
             function get_initial_options() {
-                var row, value;
+                var row, column,value;
                 var row_options = [];
                 for (row=0; row<9; row++) {
                     row_options[row] = [];
@@ -207,7 +211,6 @@
                         row_options[row].push(parseInt(value));
                     }
                 }
-                var column;
                 var column_options = [];
                 for (column=0; column<9; column++) {
                     column_options[column] = [];
@@ -225,7 +228,7 @@
                         }
                     }
                 }
-                square_options = [];
+                var square_options = [];
                 for (row=0; row<9; row++) {
                     square_options[row] = [];
                     for (column=0; column<9; column++) {
@@ -242,6 +245,7 @@
                     square: square_options
                 };
             }
+
             function update_options(options, puzzle) {
                 var row, column, block_row, block_column, value, array_index;
                 for (row=0; row<9; row++) {
@@ -250,21 +254,21 @@
                         if (value != "") {
                             for (array_index=0; array_index<options.row[row].length; array_index++) {
                                 if (options.row[row][array_index] == value) {
-                                    options.row[row].splice(array_index);
+                                    options.row[row].splice(array_index, 1);
                                     break;
                                 }
                             }
                             for (array_index=0; array_index<options.column[column].length; array_index++) {
                                 if (options.column[column][array_index] == value) {
-                                    options.column[column].splice(array_index);
+                                    options.column[column].splice(array_index, 1);
                                     break;
                                 }
                             }
                             block_row = Math.trunc(row/3);
                             block_column = Math.trunc(column/3);
                             for (array_index=0; array_index<options.block[block_row][block_column].length; array_index++) {
-                                if (options.block[block_row][block_column] == value) {
-                                    options.block[block_row][block_column].splice(array_index);
+                                if (options.block[block_row][block_column][array_index] == value) {
+                                    options.block[block_row][block_column].splice(array_index, 1);
                                     break;
                                 }
                             }
@@ -276,31 +280,35 @@
                     for (column=0; column<9; column++) {
                         block_row = Math.trunc(row/3);
                         block_column = Math.trunc(column/3);
-                        for (array_index=0; array_index<options.square[row][column].length; array_index++) {
-                            value = options.square[row][column];
+                        for (value=1; value<10; value++) {
                             is_row_option = false;
                             for (option_index=0; option_index<options.row[row].length; option_index++) {
-                                if (options.row[option_index] == value) {
+                                if (options.row[row][option_index] == value.toString()) {
                                     is_row_option = true;
                                     break;
                                 }
                             }
                             is_column_option = false;
                             for (option_index=0; option_index<options.column[column].length; option_index++) {
-                                if (options.column[option_index] == value) {
+                                if (options.column[column][option_index] == value.toString()) {
                                     is_column_option = true;
                                     break;
                                 }
                             }
                             is_block_option = false;
                             for (option_index=0; option_index<options.block[block_row][block_column].length; option_index++) {
-                                if (options.block[block_row][block_column][option_index] == value) {
+                                if (options.block[block_row][block_column][option_index] == value.toString()) {
                                     is_block_option = true;
                                     break;
                                 }
                             }
-                            if (!is_row_option || !is_column_option || !is_block_option) {
-                                options.square[row][column].splice(array_index);
+                            if (!(is_row_option && is_column_option && is_block_option)) {
+                                for (array_index=0; array_index<options.square[row][column].length; array_index++) {
+                                    if (options.square[row][column][array_index] == value.toString()) {
+                                        options.square[row][column].splice(array_index, 1);
+                                        break;
+                                    }
+                                }
                             }
                         }
                     }
@@ -315,7 +323,9 @@
                     }
                 }
             }
-            function update_solution(options, puzzle) {
+
+            function update_solution(options, puzzle) {         
+                var row, column, modified;
                 modified = false;
                 for (row=0; row<9; row++) {
                     for (column=0; column<9; column++) {
@@ -329,6 +339,43 @@
                 }
                 return modified;
             }
+
+            function print_options(options) {
+                var row, column, console_str, index;
+                for (row=0; row<9; row++) {
+                    console_str="row["+row.toString()+"]:";
+                    for (index=0; index<options.row[row].length; index++) {
+                        console_str=console_str+" "+options.row[row][index];
+                    }
+                    console.log(console_str);
+                }
+                for (column=0; column<9; column++) {
+                    console_str="column["+column.toString()+"]:";
+                    for (index=0; index<options.column[column].length; index++) {
+                        console_str=console_str+" "+options.column[column][index];
+                    }
+                    console.log(console_str);
+                }
+                for (row=0; row<3; row++) {
+                    for (column=0; column<3; column++) {
+                        console_str="block["+row.toString()+"]["+column.toString()+"]:";
+                        for (index=0; index<options.block[row][column].length; index++) {
+                            console_str=console_str+" "+options.block[row][column][index];
+                        }
+                        console.log(console_str);
+                    }
+                }
+                for (row=0; row<9; row++) {
+                    for (column=0; column<9; column++) {
+                        console_str="square["+row.toString()+"]["+column.toString()+"]:";
+                        for (index=0; index<options.square[row][column].length; index++) {
+                            console_str=console_str+" "+options.square[row][column][index];
+                        }
+                        console.log(console_str);
+                    }
+                }
+            }
+
             function solve() {
                 var grid = [];
                 var row, column;
@@ -343,7 +390,7 @@
                     column = parseInt(id_string[2]);
                     grid[row][column] = sudoku_square[square_index].innerText;
                 }
-                option = get_initial_options();
+                option = get_initial_options();             
                 var keep_iterating = true;
                 while (keep_iterating) {
                     update_options(option, grid);
