@@ -376,6 +376,20 @@
                 }
             }
 
+            function is_puzzle_grid_full(puzzle) {
+                var full = true;
+                var row, column;
+                for (row=0; row<9; row++) {
+                    for (column=0; column<9; column++) {
+                        if (puzzle[row][column] == "") {
+                            full = false;
+                            break;
+                        }
+                    }
+                }
+                return full;
+            }
+
             function solve() {
                 var grid = [];
                 var row, column;
