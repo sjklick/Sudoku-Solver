@@ -9,8 +9,20 @@
             }
             @media only screen and (orientation: portrait) {
                 body {
-                    margin: 5vw;
+                    margin: 0;
                     padding: 0;
+                }
+                .about-div {
+                    display: inline-block;
+                }
+                .centering-div {
+                    display: block;
+                    width: 100vw;
+                    height: calc(1.22*90vw);
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    margin-left: 5vw;
+                    margin-right: 5vw;
                 }
                 .orientation-div {
                     display: inline-block;
@@ -83,11 +95,26 @@
                     width: calc(0.495*90vw);
                     height: calc(0.10*90vw);
                 }
+                #about {
+                    width: 100vw;
+                    height: calc(0.10*90vh);
+                }
             }
             @media only screen and (orientation: landscape) {
                 body {
-                    margin: 5vh;
+                    margin: 0;
                     padding: 0;
+                }
+                .about-div {
+                    display: flex;
+                }
+                .centering-div {
+                    display: block;
+                    width: calc(1.22*90vh);
+                    margin-top: 5vh;
+                    margin-bottom: 5vh;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
                 .orientation-div {
                     display: flex;
@@ -162,132 +189,139 @@
                     writing-mode: vertical-lr;
                     text-orientation: upright;
                 }
+                #about {
+                    width: calc(0.10*90vh);
+                    height: 100vh;
+                    writing-mode: vertical-lr;
+                    text-orientation: upright;
+                }
             }
         </style>
     </head>
     <body>
-        <div class="orientation-div">
-            <div class="sudoku-puzzle">
-                <div class="sudoku-block" id="0,0">
-                    <button class="sudoku-square" id="0,0" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="0,1" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="0,2" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="1,0" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="1,1" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="1,2" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="2,0" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="2,1" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="2,2" onclick="enter_value(this);"></button>
-                </div>
-                <div class="sudoku-block" id="0,1">
-                    <button class="sudoku-square" id="0,3" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="0,4" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="0,5" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="1,3" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="1,4" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="1,5" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="2,3" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="2,4" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="2,5" onclick="enter_value(this);"></button>
-                </div>
-                <div class="sudoku-block" id="0,2">
-                    <button class="sudoku-square" id="0,6" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="0,7" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="0,8" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="1,6" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="1,7" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="1,8" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="2,6" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="2,7" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="2,8" onclick="enter_value(this);"></button>
-                </div>
-                <div class="sudoku-block" id="1,0">
-                    <button class="sudoku-square" id="3,0" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="3,1" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="3,2" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="4,0" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="4,1" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="4,2" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="5,0" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="5,1" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="5,2" onclick="enter_value(this);"></button>
-                </div>
-                <div class="sudoku-block" id="1,1">
-                    <button class="sudoku-square" id="3,3" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="3,4" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="3,5" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="4,3" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="4,4" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="4,5" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="5,3" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="5,4" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="5,5" onclick="enter_value(this);"></button>
-                </div>
-                <div class="sudoku-block" id="1,2">
-                    <button class="sudoku-square" id="3,6" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="3,7" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="3,8" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="4,6" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="4,7" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="4,8" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="5,6" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="5,7" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="5,8" onclick="enter_value(this);"></button>
-                </div>
-                <div class="sudoku-block" id="2,0">
-                    <button class="sudoku-square" id="6,0" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="6,1" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="6,2" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="7,0" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="7,1" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="7,2" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="8,0" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="8,1" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="8,2" onclick="enter_value(this);"></button>
-                </div>
-                <div class="sudoku-block" id="2,1">
-                    <button class="sudoku-square" id="6,3" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="6,4" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="6,5" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="7,3" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="7,4" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="7,5" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="8,3" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="8,4" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="8,5" onclick="enter_value(this);"></button>
-                </div>
-                <div class="sudoku-block" id="2,2">
-                    <button class="sudoku-square" id="6,6" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="6,7" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="6,8" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="7,6" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="7,7" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="7,8" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="8,6" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="8,7" onclick="enter_value(this);"></button>
-                    <button class="sudoku-square" id="8,8" onclick="enter_value(this);"></button>
+        <div class="about-div">
+            <div class="centering-div">
+                <div class="orientation-div">
+                    <div class="sudoku-puzzle">
+                        <div class="sudoku-block" id="0,0">
+                            <button class="sudoku-square" id="0,0" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="0,1" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="0,2" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="1,0" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="1,1" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="1,2" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="2,0" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="2,1" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="2,2" onclick="enter_value(this);"></button>
+                        </div>
+                        <div class="sudoku-block" id="0,1">
+                            <button class="sudoku-square" id="0,3" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="0,4" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="0,5" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="1,3" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="1,4" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="1,5" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="2,3" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="2,4" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="2,5" onclick="enter_value(this);"></button>
+                        </div>
+                        <div class="sudoku-block" id="0,2">
+                            <button class="sudoku-square" id="0,6" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="0,7" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="0,8" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="1,6" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="1,7" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="1,8" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="2,6" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="2,7" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="2,8" onclick="enter_value(this);"></button>
+                        </div>
+                        <div class="sudoku-block" id="1,0">
+                            <button class="sudoku-square" id="3,0" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="3,1" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="3,2" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="4,0" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="4,1" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="4,2" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="5,0" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="5,1" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="5,2" onclick="enter_value(this);"></button>
+                        </div>
+                        <div class="sudoku-block" id="1,1">
+                            <button class="sudoku-square" id="3,3" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="3,4" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="3,5" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="4,3" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="4,4" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="4,5" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="5,3" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="5,4" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="5,5" onclick="enter_value(this);"></button>
+                        </div>
+                        <div class="sudoku-block" id="1,2">
+                            <button class="sudoku-square" id="3,6" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="3,7" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="3,8" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="4,6" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="4,7" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="4,8" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="5,6" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="5,7" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="5,8" onclick="enter_value(this);"></button>
+                        </div>
+                        <div class="sudoku-block" id="2,0">
+                            <button class="sudoku-square" id="6,0" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="6,1" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="6,2" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="7,0" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="7,1" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="7,2" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="8,0" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="8,1" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="8,2" onclick="enter_value(this);"></button>
+                        </div>
+                        <div class="sudoku-block" id="2,1">
+                            <button class="sudoku-square" id="6,3" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="6,4" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="6,5" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="7,3" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="7,4" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="7,5" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="8,3" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="8,4" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="8,5" onclick="enter_value(this);"></button>
+                        </div>
+                        <div class="sudoku-block" id="2,2">
+                            <button class="sudoku-square" id="6,6" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="6,7" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="6,8" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="7,6" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="7,7" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="7,8" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="8,6" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="8,7" onclick="enter_value(this);"></button>
+                            <button class="sudoku-square" id="8,8" onclick="enter_value(this);"></button>
+                        </div>
+                    </div>
+                    <div class="value-options">
+                        <button class="value-button-selected" id="1" onclick="value_select(this);">1</button>
+                        <button class="value-button-unselected" id="2" onclick="value_select(this);">2</button>
+                        <button class="value-button-unselected" id="3" onclick="value_select(this);">3</button>
+                        <button class="value-button-unselected" id="4" onclick="value_select(this);">4</button>
+                        <button class="value-button-unselected" id="5" onclick="value_select(this);">5</button>
+                        <button class="value-button-unselected" id="6" onclick="value_select(this);">6</button>
+                        <button class="value-button-unselected" id="7" onclick="value_select(this);">7</button>
+                        <button class="value-button-unselected" id="8" onclick="value_select(this);">8</button>
+                        <button class="value-button-unselected" id="9" onclick="value_select(this);">9</button>
+                    </div>
+                    <div class="action-button-container">
+                        <button class="action-button" id="clear" onclick="clear_grid();">Clear</button>
+                        <button class="action-button" id="solve" onclick="solve();">Solve</button>
+                    </div>
                 </div>
             </div>
-            <div class="value-options">
-                <button class="value-button-selected" id="1" onclick="value_select(this);">1</button>
-                <button class="value-button-unselected" id="2" onclick="value_select(this);">2</button>
-                <button class="value-button-unselected" id="3" onclick="value_select(this);">3</button>
-                <button class="value-button-unselected" id="4" onclick="value_select(this);">4</button>
-                <button class="value-button-unselected" id="5" onclick="value_select(this);">5</button>
-                <button class="value-button-unselected" id="6" onclick="value_select(this);">6</button>
-                <button class="value-button-unselected" id="7" onclick="value_select(this);">7</button>
-                <button class="value-button-unselected" id="8" onclick="value_select(this);">8</button>
-                <button class="value-button-unselected" id="9" onclick="value_select(this);">9</button>
-            </div>
-            <div class="action-button-container">
-                <button class="action-button" id="clear" onclick="clear_grid();">Clear</button>
-                <button class="action-button" id="solve" onclick="solve();">Solve</button>
-            </div>
+            <button id="about">About</button>
         </div>
-        <p>
-            Author: Steven Joshua Klickermann<br>
-            Email: sjklickermann@gmail.com
-        </p>
         <script type="text/javascript">
             var value_selection = 1;
 
