@@ -7,26 +7,29 @@
         <style>
             * {
                 box-sizing: border-box;
-            }
-            .hidden-content {
-                display: block;
-                background-color: red;
-                right: calc(0.10*90vh);
-                width: 0vw;
-                height: 100vh;
-                position: absolute;
-                z-index: 1000;
-                transiton-property: width;
-                transition: 0.4s ease-in-out;
-                visibility: hidden;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: clip;
+                background-color: #696969; /* Dark Gray */
             }
             @media only screen and (orientation: portrait) {
                 body {
                     margin: 0;
                     padding: 0;
+                }
+                .hidden-content {
+                    display: block;
+                    background-color: #c0c0c0; /* HTML Silver */
+                    bottom: calc(0.10*90vh);
+                    width: 100vw;
+                    height: 0vh;
+                    position: absolute;
+                    z-index: 1000;
+                    transiton-property: height;
+                    transition: 0.4s ease-in-out;
+                    visibility: hidden;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: clip;
+                    opacity: 0.9;
+                    padding: calc(0.10*90vh);
                 }
                 .about-div {
                     display: inline-block;
@@ -112,6 +115,10 @@
                     height: calc(0.10*90vw);
                 }
                 #about {
+                    border: calc(0.01*90vh) solid black;
+                    background-color: #c0c0c0; /* HTML Silver */
+                    color: black;
+                    font-size: 16px;
                     width: 100vw;
                     height: calc(0.10*90vh);
                 }
@@ -120,6 +127,23 @@
                 body {
                     margin: 0;
                     padding: 0;
+                }
+                .hidden-content {
+                    display: block;
+                    background-color: #c0c0c0; /* HTML Silver */
+                    right: calc(0.10*90vh);
+                    width: 0vw;
+                    height: 100vh;
+                    position: absolute;
+                    z-index: 1000;
+                    transiton-property: width;
+                    transition: 0.4s ease-in-out;
+                    visibility: hidden;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: clip;
+                    opacity: 0.9;
+                    padding: calc(0.10*90vh);
                 }
                 .about-div {
                     display: flex;
@@ -206,10 +230,14 @@
                     text-orientation: upright;
                 }
                 #about {
+                    border: calc(0.01*90vh) solid black;
+                    background-color: #c0c0c0; /* HTML Silver */
+                    color: black;
+                    font-size: 16px;
                     width: calc(0.10*90vh);
                     height: 100vh;
                     writing-mode: vertical-lr;
-                    text-orientation: upright;
+                    text-orientation: upright;   
                 }
             }
         </style>
@@ -347,17 +375,29 @@
 
             function show_hide_about_panel() {
                 var hidden_panel;
+                var media_query;
                 hidden_panel = document.getElementsByClassName("hidden-content")[0];
                 /* Note that the visible attribute is initially ignores in the style,
                 and as a work-around, the else branch executes the first time, setting
                 the visibility. */
                 if (hidden_panel.style.visibility == "visible") {
                     hidden_panel.style.visibility = "hidden";
-                    hidden_panel.style.width = "0";
+                    media_query = window.matchMedia( "(orientation: landscape)" );
+                    if (media_query.matches) {
+                        hidden_panel.style.width = "0";
+                    } else {
+                        hidden_panel.style.height = "0";
+                    }
                 } else {
                     hidden_panel.style.visibility = "visible";
-                    hidden_panel.style.width = "calc(100vw - 0.10*90vh)";
+                    media_query = window.matchMedia( "(orientation: landscape)" );
+                    if (media_query.matches) {
+                        hidden_panel.style.width = "calc(100vw - 0.10*90vh)";
+                    } else {
+                        hidden_panel.style.height = "calc(100vh - 0.10*90vh)";
+                    }
                 }
+                
             }
 
             function clear_grid() {
