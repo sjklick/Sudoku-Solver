@@ -3,14 +3,13 @@
     <head>
         <title>Soduko-Solver</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8"/>
         <style>
             * {
                 box-sizing: border-box;
             }
             .hidden-content {
                 display: block;
-                overflow: hidden;
-                visibility: hidden;
                 background-color: red;
                 right: calc(0.10*90vh);
                 width: 0vw;
@@ -19,6 +18,10 @@
                 z-index: 1000;
                 transiton-property: width;
                 transition: 0.4s ease-in-out;
+                visibility: hidden;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: clip;
             }
             @media only screen and (orientation: portrait) {
                 body {
@@ -345,12 +348,15 @@
             function show_hide_about_panel() {
                 var hidden_panel;
                 hidden_panel = document.getElementsByClassName("hidden-content")[0];
-                if (hidden_panel.style.visibility == "hidden") {
-                    hidden_panel.style.visibility = "visible";
-                    hidden_panel.style.width = "calc(100vw - 0.10*90vh)";
-                } else {
+                /* Note that the visible attribute is initially ignores in the style,
+                and as a work-around, the else branch executes the first time, setting
+                the visibility. */
+                if (hidden_panel.style.visibility == "visible") {
                     hidden_panel.style.visibility = "hidden";
                     hidden_panel.style.width = "0";
+                } else {
+                    hidden_panel.style.visibility = "visible";
+                    hidden_panel.style.width = "calc(100vw - 0.10*90vh)";
                 }
             }
 
