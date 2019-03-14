@@ -7,6 +7,19 @@
             * {
                 box-sizing: border-box;
             }
+            .hidden-content {
+                display: block;
+                overflow: hidden;
+                visibility: hidden;
+                background-color: red;
+                right: calc(0.10*90vh);
+                width: 0vw;
+                height: 100vh;
+                position: absolute;
+                z-index: 1000;
+                transiton-property: width;
+                transition: 0.4s ease-in-out;
+            }
             @media only screen and (orientation: portrait) {
                 body {
                     margin: 0;
@@ -320,10 +333,26 @@
                     </div>
                 </div>
             </div>
-            <button id="about">About</button>
+            <div class="hidden-content">
+                Author: Steven Joshua Klickermann<br>
+                Email: sjklickermann@gmail.com
+            </div>
+            <button id="about" onclick="show_hide_about_panel();">About</button>
         </div>
         <script type="text/javascript">
             var value_selection = 1;
+
+            function show_hide_about_panel() {
+                var hidden_panel;
+                hidden_panel = document.getElementsByClassName("hidden-content")[0];
+                if (hidden_panel.style.visibility == "hidden") {
+                    hidden_panel.style.visibility = "visible";
+                    hidden_panel.style.width = "calc(100vw - 0.10*90vh)";
+                } else {
+                    hidden_panel.style.visibility = "hidden";
+                    hidden_panel.style.width = "0";
+                }
+            }
 
             function clear_grid() {
                 var sudoku_square = document.getElementsByClassName("sudoku-square");
