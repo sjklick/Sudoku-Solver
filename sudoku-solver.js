@@ -19,9 +19,9 @@ function show_hide_about_panel() {
         hidden_panel.style.visibility = "visible";
         media_query = window.matchMedia( "(orientation: landscape)" );
         if (media_query.matches) {
-            hidden_panel.style.width = "calc(100vw - 0.10*90vh)";
+            hidden_panel.style.width = "calc(100vw - var(--square)";
         } else {
-            hidden_panel.style.height = "calc(100vh - 0.10*90vh)";
+            hidden_panel.style.height = "calc(100vh - var(--square)";
         }
     }
     

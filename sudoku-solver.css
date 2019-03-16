@@ -1,235 +1,221 @@
+@media only screen and (orientation: portrait) {
+    :root {
+        --puzzle: 90vw;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    :root {
+        --puzzle: 90vh;
+    }
+}
+
+:root {
+    --square: calc(0.10*var(--puzzle));
+    --gap: calc(0.01*var(--puzzle));
+    --border: var(--gap);
+    --block: calc(3*var(--square) + 2*var(--gap));
+}
+
 * {
     box-sizing: border-box;
     background-color: #696969; /* Dark Gray */
 }
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.hidden-content {
+    display: block;
+    background-color: #c0c0c0; /* HTML Silver */
+    position: absolute;
+    z-index: 1000;
+    transition: 0.4s ease-in-out;
+    visibility: hidden;
+    overflow: hidden;
+    text-overflow: clip;
+    opacity: 0.9;
+}
+
+.about-div {
+    display: flex;
+}
+
+.centering-div {
+    display: block;
+}
+
+.sudoku-puzzle {
+    background-color: black;
+    display: grid;
+    width: var(--puzzle);
+    height: var(--puzzle);
+    grid-template-columns: repeat(3, var(--block));
+    grid-template-rows: repeat(3, var(--block));
+    grid-column-gap: var(--gap);
+    grid-row-gap: var(--gap);
+    padding: var(--gap);
+}
+
+.sudoku-square {
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    border: none;
+    width: var(--square);
+    height: var(--square);
+}
+
+.sudoku-block {
+    background-color: #c0c0c0; /* HTML Silver */
+    display: grid;
+    width: var(--block);
+    height: var(--block);
+    grid-template-columns: repeat(3, var(--square));
+    grid-template-rows: repeat(3, var(--square));
+    grid-column-gap: var(--gap);
+    grid-row-gap: var(--gap);
+}
+
+.value-options {
+    display: grid;
+    padding: var(--gap);
+}
+
+.value-button-unselected {
+    border: none;
+    background-color: #c0c0c0; /* HTML Silver */
+    color: black;
+    font-size: 16px;
+    width: var(--square);
+    height: var(--square);
+}
+
+.value-button-selected {
+    border: var(--border) solid black;
+    background-color: #c0c0c0; /* HTML Silver */
+    color: black;
+    font-size: 16px;
+    width: var(--square);
+    height: var(--square);
+}
+
+.action-button-container {
+    display: grid;
+}
+
+.action-button {
+    border: var(--border) solid black;
+    background-color: #c0c0c0; /* HTML Silver */
+    color: black;
+    font-size: 16px;
+}
+
+#about {
+    border: var(--border) solid black;
+    background-color: #c0c0c0; /* HTML Silver */
+    color: black;
+    font-size: 16px;
+}
+
 @media only screen and (orientation: portrait) {
-    body {
-        margin: 0;
-        padding: 0;
-    }
     .hidden-content {
-        display: block;
-        background-color: #c0c0c0; /* HTML Silver */
-        bottom: calc(0.10*90vh);
+        bottom: var(--square);
         width: 100vw;
         height: 0vh;
-        position: absolute;
-        z-index: 1000;
         transiton-property: height;
-        transition: 0.4s ease-in-out;
-        visibility: hidden;
-        overflow: hidden;
-        text-overflow: clip;
-        opacity: 0.9;
         padding: 5vw;
     }
+
     .about-div {
-        display: flex;
         flex-direction: column;
         width: 100vw;
         height: 100vh;
     }
+
     .centering-div {
-        display: block;
-        width: 90vw;
-        height: calc(1.22*90vw);
+        width: var(--puzzle);
+        height: calc(var(--puzzle) + 2*var(--square) + 2*var(--gap));
         margin-top: auto;
         margin-bottom: auto;
         margin-left: 5vw;
         margin-right: 5vw;
     }
+
     .orientation-div {
         display: block;
     }
-    .sudoku-puzzle {
-        background-color: black;
-        width: 90vw;
-        height: 90vw;
-        display: grid;
-        grid-template-columns: repeat(3, calc(0.32*90vw));
-        grid-template-rows: repeat(3, calc(0.32*90vw));
-        grid-column-gap: calc(0.01*90vw);
-        grid-row-gap: calc(0.01*90vw);
-        padding: calc(0.01*90vw);
-    }
-    .sudoku-square {
-        background-color: white;
-        color: black;
-        font-size: 16px;
-        width: calc(0.10*90vw);
-        height: calc(0.10*90vw);
-        border: none;
-    }
-    .sudoku-block {
-        background-color: #c0c0c0; /* HTML Silver */
-        width: calc(0.32*90vw);
-        height: calc(0.32*90vw);
-        display: grid;
-        grid-template-columns: repeat(3, calc(0.10*90vw));
-        grid-template-rows: repeat(3, calc(0.10*90vw));
-        grid-column-gap: calc(0.01*90vw);
-        grid-row-gap: calc(0.01*90vw);
-    }
+
     .value-options {
-        width: 90vw;
-        height: calc(0.12*90vw);
-        display: grid;
-        grid-template-columns: repeat(9, calc(0.10*90vw));
-        grid-column-gap: calc(0.01*90vw);
-        padding: calc(0.01*90vw);
+        width: var(--puzzle);
+        height: calc(var(--square) + 2*var(--gap));
+        grid-template-columns: repeat(9, var(--square));
+        grid-column-gap: var(--gap);
     }
-    .value-button-unselected {
-        border: none;
-        background-color: #c0c0c0; /* HTML Silver */
-        color: black;
-        font-size: 16px;
-        width: calc(0.10*90vw);
-        height: calc(0.10*90vw);
-    }
-    .value-button-selected {
-        border: calc(0.01*90vw) solid black;
-        background-color: #c0c0c0; /* HTML Silver */
-        color: black;
-        font-size: 16px;
-        width: calc(0.10*90vw);
-        height: calc(0.10*90vw);
-    }
+
     .action-button-container {
-        width: 90vw;
-        height: 10vw;
-        display: grid;
-        grid-template-columns: repeat(2, calc(0.495*90vw));
-        grid-column-gap: calc(0.01*90vw);
+        width: var(--puzzle);
+        height: var(--square);
+        grid-template-columns: repeat(2, auto);
+        grid-column-gap: var(--gap);
     }
+
     .action-button {
-        border: calc(0.01*90vw) solid black;
-        background-color: #c0c0c0; /* HTML Silver */
-        color: black;
-        font-size: 16px;
-        width: calc(0.495*90vw);
-        height: calc(0.10*90vw);
+        height: var(--square);
     }
+
     #about {
-        border: calc(0.01*90vh) solid black;
-        background-color: #c0c0c0; /* HTML Silver */
-        color: black;
-        font-size: 16px;
         width: 100vw;
-        height: calc(0.10*90vh);
+        height: var(--square);
     }
 }
+
 @media only screen and (orientation: landscape) {
-    body {
-        margin: 0;
-        padding: 0;
-    }
     .hidden-content {
-        display: block;
-        background-color: #c0c0c0; /* HTML Silver */
-        right: calc(0.10*90vh);
+        right: var(--square);
         width: 0vw;
         height: 100vh;
-        position: absolute;
-        z-index: 1000;
         transiton-property: width;
-        transition: 0.4s ease-in-out;
-        visibility: hidden;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: clip;
-        opacity: 0.9;
         padding: 5vh;
     }
-    .about-div {
-        display: flex;
-    }
+
     .centering-div {
-        display: block;
-        width: calc(1.22*90vh);
+        width: calc(var(--puzzle) + 2*var(--square) + 2*var(--gap));
         margin-top: 5vh;
         margin-bottom: 5vh;
         margin-left: auto;
         margin-right: auto;
     }
+
     .orientation-div {
         display: flex;
     }
-    .sudoku-puzzle {
-        background-color: black;
-        width: 90vh;
-        height: 90vh;
-        display: grid;
-        grid-template-columns: repeat(3, calc(0.32*90vh));
-        grid-template-rows: repeat(3, calc(0.32*90vh));
-        grid-column-gap: calc(0.01*90vh);
-        grid-row-gap: calc(0.01*90vh);
-        padding: calc(0.01*90vh);
-    }
-    .sudoku-square {
-        background-color: white;
-        color: black;
-        font-size: 16px;
-        width: calc(0.10*90vh);
-        height: calc(0.10*90vh);
-        border: none;
-    }
-    .sudoku-block {
-        background-color: #c0c0c0; /* HTML Silver */
-        width: calc(0.32*90vh);
-        height: calc(0.32*90vh);
-        display: grid;
-        grid-template-columns: repeat(3, calc(0.10*90vh));
-        grid-template-rows: repeat(3, calc(0.10*90vh));
-        grid-column-gap: calc(0.01*90vh);
-        grid-row-gap: calc(0.01*90vh);
-    }
+
     .value-options {
-        width: calc(0.12*90vh);
-        height: 90vh;
-        display: grid;
-        grid-template-rows: repeat(9, calc(0.10*90vh));
-        grid-row-gap: calc(0.01*90vh);
-        padding: calc(0.01*90vh);
+        width: calc(var(--square) + 2*var(--gap));
+        height: var(--puzzle);
+        grid-template-rows: repeat(9, var(--square));
+        grid-row-gap: var(--gap);
     }
-    .value-button-unselected {
-        border: none;
-        background-color: #c0c0c0; /* HTML Silver */
-        color: black;
-        font-size: 16px;
-        width: calc(0.10*90vh);
-        height: calc(0.10*90vh);
-    }
-    .value-button-selected {
-        border: calc(0.01*90vh) solid black;
-        background-color: #c0c0c0; /* HTML Silver */
-        color: black;
-        font-size: 16px;
-        width: calc(0.10*90vh);
-        height: calc(0.10*90vh);
-    }
+
     .action-button-container {
-        width: 10vh;
-        height: 90vh;
-        display: grid;
-        grid-template-rows: repeat(2, calc(0.495*90vh));
-        grid-row-gap: calc(0.01*90vh);
+        width: var(--square);
+        height: var(--puzzle);
+        grid-template-rows: repeat(2, auto);
+        grid-row-gap: var(--gap);
     }
+
     .action-button {
-        border: calc(0.01*90vh) solid black;
-        background-color: #c0c0c0; /* HTML Silver */
-        color: black;
-        font-size: 16px;
-        width: calc(0.10*90vh);
-        height: calc(0.495*90vh);
+        width: var(--square);
         writing-mode: vertical-lr;
         text-orientation: upright;
     }
+
     #about {
-        border: calc(0.01*90vh) solid black;
-        background-color: #c0c0c0; /* HTML Silver */
-        color: black;
-        font-size: 16px;
-        width: calc(0.10*90vh);
+        width: var(--square);
         height: 100vh;
         writing-mode: vertical-lr;
         text-orientation: upright;
