@@ -46,8 +46,8 @@
         width: 90vw;
         height: 90vw;
         display: grid;
-        grid-template-columns: calc(0.32*90vw) calc(0.32*90vw) calc(0.32*90vw);
-        grid-template-rows: calc(0.32*90vw) calc(0.32*90vw) calc(0.32*90vw);
+        grid-template-columns: repeat(3, calc(0.32*90vw));
+        grid-template-rows: repeat(3, calc(0.32*90vw));
         grid-column-gap: calc(0.01*90vw);
         grid-row-gap: calc(0.01*90vw);
         padding: calc(0.01*90vw);
@@ -65,8 +65,8 @@
         width: calc(0.32*90vw);
         height: calc(0.32*90vw);
         display: grid;
-        grid-template-columns: calc(0.10*90vw) calc(0.10*90vw) calc(0.10*90vw);
-        grid-template-rows: calc(0.10*90vw) calc(0.10*90vw) calc(0.10*90vw);
+        grid-template-columns: repeat(3, calc(0.10*90vw));
+        grid-template-rows: repeat(3, calc(0.10*90vw));
         grid-column-gap: calc(0.01*90vw);
         grid-row-gap: calc(0.01*90vw);
     }
@@ -74,7 +74,7 @@
         width: 90vw;
         height: calc(0.12*90vw);
         display: grid;
-        grid-template-columns: calc(0.10*90vw) calc(0.10*90vw) calc(0.10*90vw) calc(0.10*90vw) calc(0.10*90vw) calc(0.10*90vw) calc(0.10*90vw) calc(0.10*90vw) calc(0.10*90vw);
+        grid-template-columns: repeat(9, calc(0.10*90vw));
         grid-column-gap: calc(0.01*90vw);
         padding: calc(0.01*90vw);
     }
@@ -98,7 +98,7 @@
         width: 90vw;
         height: 10vw;
         display: grid;
-        grid-template-columns: calc(0.495*90vw) calc(0.495*90vw);
+        grid-template-columns: repeat(2, calc(0.495*90vw));
         grid-column-gap: calc(0.01*90vw);
     }
     .action-button {
@@ -159,8 +159,8 @@
         width: 90vh;
         height: 90vh;
         display: grid;
-        grid-template-columns: calc(0.32*90vh) calc(0.32*90vh) calc(0.32*90vh);
-        grid-template-rows: calc(0.32*90vh) calc(0.32*90vh) calc(0.32*90vh);
+        grid-template-columns: repeat(3, calc(0.32*90vh));
+        grid-template-rows: repeat(3, calc(0.32*90vh));
         grid-column-gap: calc(0.01*90vh);
         grid-row-gap: calc(0.01*90vh);
         padding: calc(0.01*90vh);
@@ -178,8 +178,8 @@
         width: calc(0.32*90vh);
         height: calc(0.32*90vh);
         display: grid;
-        grid-template-columns: calc(0.10*90vh) calc(0.10*90vh) calc(0.10*90vh);
-        grid-template-rows: calc(0.10*90vh) calc(0.10*90vh) calc(0.10*90vh);
+        grid-template-columns: repeat(3, calc(0.10*90vh));
+        grid-template-rows: repeat(3, calc(0.10*90vh));
         grid-column-gap: calc(0.01*90vh);
         grid-row-gap: calc(0.01*90vh);
     }
@@ -187,7 +187,7 @@
         width: calc(0.12*90vh);
         height: 90vh;
         display: grid;
-        grid-template-rows: calc(0.10*90vh) calc(0.10*90vh) calc(0.10*90vh) calc(0.10*90vh) calc(0.10*90vh) calc(0.10*90vh) calc(0.10*90vh) calc(0.10*90vh) calc(0.10*90vh);
+        grid-template-rows: repeat(9, calc(0.10*90vh));
         grid-row-gap: calc(0.01*90vh);
         padding: calc(0.01*90vh);
     }
@@ -211,7 +211,7 @@
         width: 10vh;
         height: 90vh;
         display: grid;
-        grid-template-rows: calc(0.495*90vh) calc(0.495*90vh);
+        grid-template-rows: repeat(2, calc(0.495*90vh));
         grid-row-gap: calc(0.01*90vh);
     }
     .action-button {
