@@ -72,6 +72,11 @@ body {
     border: none;
     width: var(--square);
     height: var(--square);
+    font-weight: normal;
+}
+
+.sudoku-square.initial-puzzle-value {
+    font-weight: bold;
 }
 
 .sudoku-block {
