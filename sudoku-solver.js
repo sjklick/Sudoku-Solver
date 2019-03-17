@@ -1,32 +1,5 @@
 var value_selection = 1;
 
-function show_hide_about_panel() {
-    var hidden_panel;
-    var media_query;
-    hidden_panel = document.getElementsByClassName("hidden-content")[0];
-    /* Note that the visible attribute is initially ignores in the style,
-    and as a work-around, the else branch executes the first time, setting
-    the visibility. */
-    if (hidden_panel.style.visibility == "visible") {
-        hidden_panel.style.visibility = "hidden";
-        media_query = window.matchMedia( "(orientation: landscape)" );
-        if (media_query.matches) {
-            hidden_panel.style.width = "0";
-        } else {
-            hidden_panel.style.height = "0";
-        }
-    } else {
-        hidden_panel.style.visibility = "visible";
-        media_query = window.matchMedia( "(orientation: landscape)" );
-        if (media_query.matches) {
-            hidden_panel.style.width = "calc(100vw - var(--square)";
-        } else {
-            hidden_panel.style.height = "calc(100vh - var(--square)";
-        }
-    }
-    
-}
-
 function clear_grid() {
     var sudoku_square = document.getElementsByClassName("sudoku-square");
     var square_index;

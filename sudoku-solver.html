@@ -128,14 +128,16 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden-content">
-                Author: Steven Joshua Klickermann<br>
-                Email: sjklickermann@gmail.com<br>
-                GitHub: <a href="https://github.com/sjklick">https://github.com/sjklick</a><br><br>
-                This project is licensed under the terms of the GNU General Public License v3.0.<br>
-                The full project source code and license is available at <a href="https://github.com/sjklick/Sudoku-Solver">https://github.com/sjklick/Sudoku-Solver</a>.
+            <button id="about" onclick="document.getElementById('hidden-content').classList.toggle('view')">About</button>
+        </div>
+        <div id="hidden-content">
+            <div id="inner-content">
+            Author: Steven Joshua Klickermann<br>
+            Email: sjklickermann@gmail.com<br>
+            GitHub: <a href="https://github.com/sjklick">https://github.com/sjklick</a><br><br>
+            This project is licensed under the terms of the GNU General Public License v3.0.<br>
+            The full project source code and license is available at <a href="https://github.com/sjklick/Sudoku-Solver">https://github.com/sjklick/Sudoku-Solver</a>.
             </div>
-            <button id="about" onclick="show_hide_about_panel();">About</button>
         </div>
         <script src="sudoku-solver.js"></script>
     </body>

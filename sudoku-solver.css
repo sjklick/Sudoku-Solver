@@ -27,16 +27,22 @@ body {
     padding: 0;
 }
 
-.hidden-content {
+#hidden-content {
     display: block;
     background-color: #c0c0c0; /* HTML Silver */
     position: absolute;
     z-index: 1000;
-    transition: 0.4s ease-in-out;
-    visibility: hidden;
     overflow: hidden;
     text-overflow: clip;
     opacity: 0.9;
+    width: 0;
+    height: 0;
+}
+
+#inner-content {
+    background-color: #c0c0c0; /* HTML Silver */
+    opacity: 1;
+    margin: 5vh;
 }
 
 .about-div {
@@ -121,12 +127,15 @@ body {
 }
 
 @media only screen and (orientation: portrait) {
-    .hidden-content {
+    #hidden-content {
         bottom: var(--square);
+        right: 0;
         width: 100vw;
-        height: 0vh;
-        transiton-property: height;
-        padding: 5vw;
+        transition: height 0.4s ease-in-out;
+    }
+
+    #hidden-content.view {
+        height: calc(100vh - var(--square));
     }
 
     .about-div {
@@ -173,13 +182,16 @@ body {
 }
 
 @media only screen and (orientation: landscape) {
-    .hidden-content {
+    #hidden-content {
+        bottom: 0;
         right: var(--square);
-        width: 0vw;
         height: 100vh;
-        transiton-property: width;
         white-space: nowrap;
-        padding: 5vh;
+        transition: width 0.4s ease-in-out;
+    }
+
+    #hidden-content.view {
+        width: calc(100vw - var(--square));
     }
 
     .centering-div {
