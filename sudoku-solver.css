@@ -133,14 +133,14 @@ body {
 
 @media only screen and (orientation: portrait) {
     #hidden-content {
-        bottom: var(--square);
+        bottom: calc(2*var(--square));
         right: 0;
         width: 100vw;
         transition: height 0.4s ease-in-out;
     }
 
     #hidden-content.view {
-        height: calc(100vh - var(--square));
+        height: calc(100vh - 2*var(--square));
     }
 
     .about-div {
@@ -182,21 +182,21 @@ body {
 
     #about {
         width: 100vw;
-        height: var(--square);
+        height: calc(2*var(--square));
     }
 }
 
 @media only screen and (orientation: landscape) {
     #hidden-content {
         bottom: 0;
-        right: var(--square);
+        right: calc(2*var(--square));
         height: 100vh;
         white-space: nowrap;
         transition: width 0.4s ease-in-out;
     }
 
     #hidden-content.view {
-        width: calc(100vw - var(--square));
+        width: calc(100vw - 2*var(--square));
     }
 
     .centering-div {
@@ -232,9 +232,7 @@ body {
     }
 
     #about {
-        width: var(--square);
+        width: calc(2*var(--square));
         height: 100vh;
-        writing-mode: vertical-lr;
-        text-orientation: upright;
     }
 }
