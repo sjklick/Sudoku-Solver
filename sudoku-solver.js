@@ -1,4 +1,5 @@
 var value_selection = 1;
+var iteration_count;
 
 function clear_grid() {
     var sudoku_square = document.getElementsByClassName("sudoku-square");
@@ -205,7 +206,7 @@ function options_to_document(options) {
         if (options[row][column].length == 1) {
             square[index].innerText = options[row][column][0];
         } else {
-            square[index].innerText = "";
+            square[index].innerText = "?";
         }
     }
 }
@@ -314,6 +315,11 @@ function is_valid_solution(options) {
 
 function recursive_solve(options) {
     var row, column, keep_iterating, index, temp_options, value;
+    /* If the function is taking to long to execute, give up and return. */
+    iteration_count += 1;
+    if (iteration_count > 1000) {
+        return null;
+    }
     /* Reduce options as much as possible using basic soduko rules. */
     keep_iterating = true;
     while (keep_iterating) {
@@ -356,10 +362,14 @@ function recursive_solve(options) {
 }
 
 function solve() {
-    var options, keep_iterating;
-    options = options_from_document();
+    var options, initial_options, keep_iterating;
+    initial_options = options_from_document();
+    options = initial_options;
+    iteration_count = 0;
     options = recursive_solve(options);
     if (options != null) {
         options_to_document(options);
+    } else {
+        options_to_document(initial_options);
     }
 }
