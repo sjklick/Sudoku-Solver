@@ -1,6 +1,16 @@
 var value_selection = 1;
 var iteration_count;
 
+/*function initialize_site(event) {
+    if (document.readyState == "complete") {
+        var button;
+        button = document.getElementById("clear-solve");
+        button.innerText = "Clear";
+    }
+}
+
+document.addEventListener("readystatechange", initialize_site, false);*/
+
 function clear_grid() {
     var sudoku_square = document.getElementsByClassName("sudoku-square");
     var square_index;
@@ -371,5 +381,17 @@ function solve() {
         options_to_document(options);
     } else {
         options_to_document(initial_options);
+    }
+}
+
+function action_button_pressed() {
+    var button;
+    button = document.getElementById("clear-solve");
+    if (button.innerText == "Clear") {
+        clear_grid();
+        button.innerText = "Solve";
+    } else {
+        solve();
+        button.innerText = "Clear";
     }
 }

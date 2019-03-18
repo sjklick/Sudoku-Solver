@@ -124,6 +124,13 @@ body {
     font-size: 16px;
 }
 
+#clear-solve {
+    border: var(--border) solid black;
+    background-color: #c0c0c0; /* HTML Silver */
+    color: black;
+    font-size: 16px;
+}
+
 #about {
     border: var(--border) solid black;
     background-color: #c0c0c0; /* HTML Silver */
@@ -151,7 +158,7 @@ body {
 
     .centering-div {
         width: var(--puzzle);
-        height: calc(var(--puzzle) + 2*var(--square) + 2*var(--gap));
+        height: calc(var(--puzzle) + 3*var(--square) + 2*var(--gap));
         margin-top: auto;
         margin-bottom: auto;
         margin-left: 5vw;
@@ -180,6 +187,11 @@ body {
         height: var(--square);
     }
 
+    #clear-solve {
+        width: var(--puzzle);
+        height: calc(2*var(--square));
+    }
+
     #about {
         width: 100vw;
         height: calc(2*var(--square));
@@ -200,7 +212,7 @@ body {
     }
 
     .centering-div {
-        width: calc(var(--puzzle) + 2*var(--square) + 2*var(--gap));
+        width: calc(var(--puzzle) + 3*var(--square) + 2*var(--gap));
         margin-top: 5vh;
         margin-bottom: 5vh;
         margin-left: auto;
@@ -229,6 +241,11 @@ body {
         width: var(--square);
         writing-mode: vertical-lr;
         text-orientation: upright;
+    }
+
+    #clear-solve {
+        width: calc(2*var(--square));
+        height: var(--puzzle);
     }
 
     #about {
