@@ -92,7 +92,7 @@ body {
 
 .value-options {
     display: grid;
-    padding: var(--gap);
+    padding: var(--gap)
 }
 
 .value-button-unselected {
@@ -158,7 +158,6 @@ body {
 
     .centering-div {
         width: var(--puzzle);
-        height: calc(var(--puzzle) + 3*var(--square) + 2*var(--gap));
         margin-top: auto;
         margin-bottom: auto;
         margin-left: 5vw;
@@ -171,9 +170,10 @@ body {
 
     .value-options {
         width: var(--puzzle);
-        height: calc(var(--square) + 2*var(--gap));
+        height: calc(var(--square) + var(--gap));
         grid-template-columns: repeat(9, var(--square));
         grid-column-gap: var(--gap);
+        padding-bottom: 0;
     }
 
     .action-button-container {
@@ -190,6 +190,7 @@ body {
     #clear-solve {
         width: var(--puzzle);
         height: calc(2*var(--square));
+        margin-top: var(--gap);
     }
 
     #about {
@@ -212,7 +213,6 @@ body {
     }
 
     .centering-div {
-        width: calc(var(--puzzle) + 3*var(--square) + 2*var(--gap));
         margin-top: 5vh;
         margin-bottom: 5vh;
         margin-left: auto;
@@ -224,10 +224,11 @@ body {
     }
 
     .value-options {
-        width: calc(var(--square) + 2*var(--gap));
+        width: calc(var(--square) + var(--gap));
         height: var(--puzzle);
         grid-template-rows: repeat(9, var(--square));
         grid-row-gap: var(--gap);
+        padding-right: 0;
     }
 
     .action-button-container {
@@ -246,6 +247,7 @@ body {
     #clear-solve {
         width: calc(2*var(--square));
         height: var(--puzzle);
+        margin-left: var(--gap);
     }
 
     #about {
