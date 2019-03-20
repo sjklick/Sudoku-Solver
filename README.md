@@ -20,8 +20,8 @@ in order to quickly return control to the user if an invalid puzzle was entered.
 Contact
 -------
 
-*Author*: Steven Joshua Klickermann
-*Email*: sjklickermann@gmail.com
+*Author*: Steven Joshua Klickermann\
+*Email*: sjklickermann@gmail.com\
 *GitHub*: https://github.com/sjklick
 
 License
