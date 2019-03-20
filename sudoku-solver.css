@@ -32,21 +32,24 @@ body {
     background-color: #c0c0c0; /* HTML Silver */
     position: absolute;
     z-index: 1000;
-    overflow: hidden;
-    text-overflow: clip;
     opacity: 0.9;
     width: 0;
     height: 0;
+    overflow: hidden;
 }
 
 #inner-content {
     background-color: #c0c0c0; /* HTML Silver */
     opacity: 1;
-    margin: 5vh;
+    margin: var(--square) var(--square);
+    width: calc(100vw - 4*var(--square));
+    height: calc(100vh - 4*var(--square));
 }
 
 .about-div {
     display: flex;
+    width: 100vw;
+    height: 100vh;
 }
 
 .centering-div {
@@ -139,21 +142,8 @@ body {
 }
 
 @media only screen and (orientation: portrait) {
-    #hidden-content {
-        bottom: calc(2*var(--square));
-        right: 0;
-        width: 100vw;
-        transition: height 0.4s ease-in-out;
-    }
-
-    #hidden-content.view {
-        height: calc(100vh - 2*var(--square));
-    }
-
     .about-div {
         flex-direction: column;
-        width: 100vw;
-        height: 100vh;
     }
 
     .centering-div {
@@ -200,18 +190,6 @@ body {
 }
 
 @media only screen and (orientation: landscape) {
-    #hidden-content {
-        bottom: 0;
-        right: calc(2*var(--square));
-        height: 100vh;
-        white-space: nowrap;
-        transition: width 0.4s ease-in-out;
-    }
-
-    #hidden-content.view {
-        width: calc(100vw - 2*var(--square));
-    }
-
     .centering-div {
         margin-top: 5vh;
         margin-bottom: 5vh;

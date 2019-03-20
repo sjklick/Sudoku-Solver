@@ -1,15 +1,92 @@
 var value_selection = 1;
 var iteration_count;
+var content_hidden = true;
 
-/*function initialize_site(event) {
+function initialize_site(event) {
     if (document.readyState == "complete") {
-        var button;
-        button = document.getElementById("clear-solve");
-        button.innerText = "Clear";
+        var hidden_content;
+        hidden_content = document.getElementById("hidden-content");
+        hidden_content.style.transition = "none";
+        hidden_content.style.width = "0";
+        hidden_content.style.height = "0";
+        hidden_content.style.bottom = "0";
+        hidden_content.style.right = "0";
+        console.log("Now ready.");
     }
 }
 
-document.addEventListener("readystatechange", initialize_site, false);*/
+function toggle_hidden_content() {
+    var hidden_content;
+    hidden_content = document.getElementById("hidden-content");
+    if (content_hidden) {   
+        content_hidden = false;   
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            hidden_content.style.bottom = "calc(2*var(--square))";
+            hidden_content.style.right = "0";
+            hidden_content.style.width = "100vw";
+            hidden_content.style.height = "calc(100vh - 2*var(--square))";
+            hidden_content.style.transition = "height 2s ease-in-out";
+        } else {
+            hidden_content.style.bottom = "0";
+            hidden_content.style.right = "calc(2*var(--square))";
+            hidden_content.style.width = "calc(100vw - 2*var(--square))";
+            hidden_content.style.height = "100vh";
+            hidden_content.style.transition = "width 2s ease-in-out";
+        }
+        console.log("Now visible.");
+    } else {
+        content_hidden = true;
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            hidden_content.style.bottom = "calc(2*var(--square))";
+            hidden_content.style.right = "0";
+            hidden_content.style.width = "100vw";
+            hidden_content.style.height = "0";
+            hidden_content.style.transition = "height 2s ease-in-out";
+        } else {
+            hidden_content.style.bottom = "0";
+            hidden_content.style.right = "calc(2*var(--square))";
+            hidden_content.style.width = "0";
+            hidden_content.style.height = "100vh";
+            hidden_content.style.transition = "width 2s ease-in-out";
+        }
+        console.log("Now hidden.");
+    }
+}
+
+function on_resize() {
+    var hidden_content;
+    hidden_content = document.getElementById("hidden-content");
+    if (!content_hidden) {
+        hidden_content.style.transition = "none";
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            hidden_content.style.bottom = "calc(2*var(--square))";
+            hidden_content.style.right = "0";
+            hidden_content.style.width = "100vw";
+            hidden_content.style.height = "calc(100vh - 2*var(--square))";
+        } else {
+            hidden_content.style.bottom = "0";
+            hidden_content.style.right = "calc(2*var(--square))";
+            hidden_content.style.width = "calc(100vw - 2*var(--square))";
+            hidden_content.style.height = "100vh";
+        }
+    }
+    console.log("Resize complete.");
+}
+
+/* This callback is needed in case the orientation changed while the "About" panel is hidden.
+Otherwise, the transition will start at a non-zero value if the button is pressed. */
+function on_transition_end() {
+    if (content_hidden) {
+        var hidden_content;
+        hidden_content = document.getElementById("hidden-content");
+        hidden_content.style.width = "0";
+        hidden_content.style.height = "0";
+    }
+    console.log("Transition end.");
+}
+
+document.addEventListener("readystatechange", initialize_site, false);
+document.getElementById("hidden-content").addEventListener("transitionend", on_transition_end);
 
 function clear_grid() {
     var sudoku_square = document.getElementsByClassName("sudoku-square");

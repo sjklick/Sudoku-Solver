@@ -6,7 +6,7 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="sudoku-solver.css"/>
     </head>
-    <body>
+    <body onresize="on_resize();">
         <div class="about-div">
             <div class="centering-div">
                 <div class="orientation-div">
@@ -125,7 +125,7 @@
                     <button id="clear-solve" onclick="action_button_pressed();">Solve</button>
                 </div>
             </div>
-            <button id="about" onclick="document.getElementById('hidden-content').classList.toggle('view')">About</button>
+            <button id="about" onclick="toggle_hidden_content();">About</button>
         </div>
         <div id="hidden-content">
             <div id="inner-content">
