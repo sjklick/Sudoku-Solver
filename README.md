@@ -4,30 +4,24 @@ Summary
 =======
 
 This is an implementation of a solver for the popular Soduku puzzle,
-developed for pedagogical purposes. The application is written in HTML
-with Javascript.
+developed for pedagogical purposes. The application is written in HTML,
+CSS, and JavaScript.
 
 Program Explanation
 ===================
 
-The core algorithm currently evaluates each square of the solution,
-which is initially the same as the input puzzle. For each square,
-it checks which numbers (1-9 inclusive) are available for use based
-on the corresponding row, column, and 3x3 block. If the intersection
-of these options reduces to a single option, the solution is updated
-for that square. This algorithm is iterated over the puzzle until an
-iteration no longer results in a change to the solution.
-
-Executing
-=========
-
-Open sudoku-solver.html in a web browser.
+This solver uses a recursive algorithm to try possible options until a solution
+is found. At each iteration and each square, it checks which numbers (1-9 inclusive)
+are available for use based on the corresponding row, column, and 3x3 block, and
+updates the possible options accordingly. The number of iterations has a fixed limit
+in order to quickly return control to the user if an invalid puzzle was entered.
 
 Author
 ======
 
 Name: Steven Joshua Klickermann
 Email: sjklickermann@gmail.com
+GitHub: https://github.com/sjklick
 
 License
 =======
