@@ -1,16 +1,5 @@
-@media only screen and (orientation: portrait) {
-    :root {
-        --puzzle: 90vw;
-    }
-}
-
-@media only screen and (orientation: landscape) {
-    :root {
-        --puzzle: 90vh;
-    }
-}
-
 :root {
+    --puzzle: 90vmin;
     --square: calc(0.10*var(--puzzle));
     --gap: calc(0.01*var(--puzzle));
     --border: var(--gap);
