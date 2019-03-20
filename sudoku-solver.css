@@ -4,11 +4,13 @@
     --gap: calc(0.01*var(--puzzle));
     --border: var(--gap);
     --block: calc(3*var(--square) + 2*var(--gap));
+    --font-size: 4vmin;
 }
 
 * {
     box-sizing: border-box;
     background-color: #696969; /* Dark Gray */
+    font-size: var(--font-size);
 }
 
 body {
@@ -31,8 +33,6 @@ body {
     background-color: #c0c0c0; /* HTML Silver */
     opacity: 1;
     margin: var(--square) var(--square);
-    width: calc(100vw - 4*var(--square));
-    height: calc(100vh - 4*var(--square));
 }
 
 .about-div {
@@ -60,7 +60,6 @@ body {
 .sudoku-square {
     background-color: white;
     color: black;
-    font-size: 16px;
     border: none;
     width: var(--square);
     height: var(--square);
@@ -100,7 +99,6 @@ body {
     border: var(--border) solid black;
     background-color: #c0c0c0; /* HTML Silver */
     color: black;
-    font-size: 16px;
     width: var(--square);
     height: var(--square);
 }
@@ -109,17 +107,19 @@ body {
     border: var(--border) solid black;
     background-color: #c0c0c0; /* HTML Silver */
     color: black;
-    font-size: 16px;
 }
 
 #about {
     border: var(--border) solid black;
     background-color: #c0c0c0; /* HTML Silver */
     color: black;
-    font-size: 16px;
 }
 
-a, h1 {
+h1 {
+    font-size: calc(2*var(--font-size));
+}
+
+h1, h2, p, a, i {
     background-color: #c0c0c0; /* HTML Silver */
 }
 
@@ -146,6 +146,11 @@ a, h1 {
         grid-template-columns: repeat(9, var(--square));
         grid-column-gap: var(--gap);
         padding-bottom: 0;
+    }
+
+    #inner-content {
+        width: calc(100vw - 2*var(--square));
+        height: calc(100vh - 4*var(--square));
     }
 
     #clear-solve {
@@ -178,6 +183,11 @@ a, h1 {
         grid-template-rows: repeat(9, var(--square));
         grid-row-gap: var(--gap);
         padding-right: 0;
+    }
+
+    #inner-content {
+        width: calc(100vw - 4*var(--square));
+        height: calc(100vh - 2*var(--square));
     }
 
     #clear-solve {
