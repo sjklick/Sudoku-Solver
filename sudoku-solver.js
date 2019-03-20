@@ -25,13 +25,13 @@ function toggle_hidden_content() {
             hidden_content.style.right = "0";
             hidden_content.style.width = "100vw";
             hidden_content.style.height = "calc(100vh - 2*var(--square))";
-            hidden_content.style.transition = "height 2s ease-in-out";
+            hidden_content.style.transition = "height 0.5s ease-in-out";
         } else {
             hidden_content.style.bottom = "0";
             hidden_content.style.right = "calc(2*var(--square))";
             hidden_content.style.width = "calc(100vw - 2*var(--square))";
             hidden_content.style.height = "100vh";
-            hidden_content.style.transition = "width 2s ease-in-out";
+            hidden_content.style.transition = "width 0.5s ease-in-out";
         }
         console.log("Now visible.");
     } else {
@@ -41,13 +41,13 @@ function toggle_hidden_content() {
             hidden_content.style.right = "0";
             hidden_content.style.width = "100vw";
             hidden_content.style.height = "0";
-            hidden_content.style.transition = "height 2s ease-in-out";
+            hidden_content.style.transition = "height 0.5s ease-in-out";
         } else {
             hidden_content.style.bottom = "0";
             hidden_content.style.right = "calc(2*var(--square))";
             hidden_content.style.width = "0";
             hidden_content.style.height = "100vh";
-            hidden_content.style.transition = "width 2s ease-in-out";
+            hidden_content.style.transition = "width 0.5s ease-in-out";
         }
         console.log("Now hidden.");
     }

@@ -116,17 +116,6 @@ body {
     height: var(--square);
 }
 
-.action-button-container {
-    display: grid;
-}
-
-.action-button {
-    border: var(--border) solid black;
-    background-color: #c0c0c0; /* HTML Silver */
-    color: black;
-    font-size: 16px;
-}
-
 #clear-solve {
     border: var(--border) solid black;
     background-color: #c0c0c0; /* HTML Silver */
@@ -166,17 +155,6 @@ body {
         padding-bottom: 0;
     }
 
-    .action-button-container {
-        width: var(--puzzle);
-        height: var(--square);
-        grid-template-columns: repeat(2, auto);
-        grid-column-gap: var(--gap);
-    }
-
-    .action-button {
-        height: var(--square);
-    }
-
     #clear-solve {
         width: var(--puzzle);
         height: calc(2*var(--square));
@@ -207,19 +185,6 @@ body {
         grid-template-rows: repeat(9, var(--square));
         grid-row-gap: var(--gap);
         padding-right: 0;
-    }
-
-    .action-button-container {
-        width: var(--square);
-        height: var(--puzzle);
-        grid-template-rows: repeat(2, auto);
-        grid-row-gap: var(--gap);
-    }
-
-    .action-button {
-        width: var(--square);
-        writing-mode: vertical-lr;
-        text-orientation: upright;
     }
 
     #clear-solve {
