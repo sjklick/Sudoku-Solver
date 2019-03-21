@@ -1,6 +1,8 @@
 Soduko-Solver
 =============
 
+Try the [live demo](https://sjklick.github.io/Sudoku-Solver/)!
+
 Summary
 -------
 
