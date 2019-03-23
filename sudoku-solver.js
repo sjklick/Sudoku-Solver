@@ -11,7 +11,6 @@ function initialize_site(event) {
         hidden_content.style.height = "0";
         hidden_content.style.bottom = "0";
         hidden_content.style.right = "0";
-        console.log("Now ready.");
     }
 }
 
@@ -33,7 +32,6 @@ function toggle_hidden_content() {
             hidden_content.style.height = "100vh";
             hidden_content.style.transition = "width 0.5s ease-in-out";
         }
-        console.log("Now visible.");
     } else {
         content_hidden = true;
         if (window.matchMedia("(orientation: portrait)").matches) {
@@ -49,7 +47,6 @@ function toggle_hidden_content() {
             hidden_content.style.height = "100vh";
             hidden_content.style.transition = "width 0.5s ease-in-out";
         }
-        console.log("Now hidden.");
     }
 }
 
@@ -70,7 +67,6 @@ function on_resize() {
             hidden_content.style.height = "100vh";
         }
     }
-    console.log("Resize complete.");
 }
 
 /* This callback is needed in case the orientation changed while the "About" panel is hidden.
@@ -82,7 +78,6 @@ function on_transition_end() {
         hidden_content.style.width = "0";
         hidden_content.style.height = "0";
     }
-    console.log("Transition end.");
 }
 
 document.addEventListener("readystatechange", initialize_site, false);
