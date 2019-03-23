@@ -39,10 +39,12 @@ body {
     display: flex;
     width: 100vw;
     height: 100vh;
+    position: relative;
 }
 
 .centering-div {
     display: block;
+    z-index: 1;
 }
 
 .sudoku-puzzle {
@@ -113,6 +115,7 @@ body {
     border: var(--border) solid black;
     background-color: #c0c0c0; /* HTML Silver */
     color: black;
+    z-index: 1;
 }
 
 h1 {
