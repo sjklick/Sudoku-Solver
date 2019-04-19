@@ -7,7 +7,7 @@ Summary
 -------
 
 This is an implementation of a solver for the popular Soduku puzzle,
-developed for pedagogical purposes. The application is written with HTML,
+developed as a learning exercise. The application is written with HTML,
 CSS, and JavaScript.
 
 Program Explanation
@@ -18,6 +18,14 @@ is found. At each iteration and each square, it checks which numbers (1-9 inclus
 are available for use based on the corresponding row, column, and 3x3 block, and
 updates the possible options accordingly. The number of iterations has a fixed limit
 in order to quickly return control to the user if an invalid puzzle was entered.
+
+Todo
+----
+- Add a default puzzle to try for the users who just want to see the app in action
+- Bring back separate clear and solve buttons
+- Add a loader with a cancel option while the puzzle is being solved
+- Make it so that the puzzle solver pauses after a number of iterations
+  - gives the interface a chance to update and respond to the user pressing cancel
 
 Contact
 -------
