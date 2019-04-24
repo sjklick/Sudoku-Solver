@@ -456,37 +456,10 @@ function solve() {
     }
 }
 
-function disable_puzzle() {
-    var square, index, options, centering;
-    square = document.getElementsByClassName("sudoku-square");
-    for (index=0; index<9*9; index++) {
-        square[index].disabled = true;
-    }
-    options = document.getElementsByClassName("value-options")[0];
-    options.style.display = "none";
-    centering = document.getElementsByClassName("centering-div")[0];
+function clear_button_pressed() {
+	clear_grid();
 }
 
-function enable_puzzle() {
-    var square, index;
-    square = document.getElementsByClassName("sudoku-square");
-    for (index=0; index<9*9; index++) {
-        square[index].disabled = false;
-    }
-    options = document.getElementsByClassName("value-options")[0];
-    options.style.display = "grid";
-}
-
-function action_button_pressed() {
-    var button;
-    button = document.getElementById("clear-solve");
-    if (button.innerText == "Clear") {
-        clear_grid();
-        button.innerText = "Solve";
-        enable_puzzle();
-    } else {
-        disable_puzzle();
-        solve();
-        button.innerText = "Clear";
-    }
+function solve_button_pressed() {
+    solve();
 }

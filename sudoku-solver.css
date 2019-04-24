@@ -1,206 +1,220 @@
 :root {
-    --puzzle: 90vmin;
-    --square: calc(0.10*var(--puzzle));
-    --gap: calc(0.01*var(--puzzle));
-    --border: var(--gap);
-    --block: calc(3*var(--square) + 2*var(--gap));
-    --font-size: 4vmin;
+	--puzzle: 90vmin;
+	--square: calc(0.10*var(--puzzle));
+	--gap: calc(0.01*var(--puzzle));
+	--border: var(--gap);
+	--block: calc(3*var(--square) + 2*var(--gap));
+	--font-size: 4vmin;
 }
 
 * {
-    box-sizing: border-box;
-    background-color: #696969; /* Dark Gray */
-    font-size: var(--font-size);
+	box-sizing: border-box;
+	background-color: #696969; /* Dark Gray */
+	font-size: var(--font-size);
 }
 
 body {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 #hidden-content {
-    display: block;
-    background-color: #c0c0c0; /* HTML Silver */
-    position: absolute;
-    z-index: 1000;
-    opacity: 0.9;
-    width: 0;
-    height: 0;
-    overflow: hidden;
+	display: block;
+	background-color: #c0c0c0; /* HTML Silver */
+	position: absolute;
+	z-index: 1000;
+	opacity: 0.9;
+	width: 0;
+	height: 0;
+	overflow: hidden;
 }
 
 #inner-content {
-    background-color: #c0c0c0; /* HTML Silver */
-    opacity: 1;
-    margin: var(--square) var(--square);
+	background-color: #c0c0c0; /* HTML Silver */
+	opacity: 1;
+	margin: var(--square) var(--square);
 }
 
 .about-div {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    position: relative;
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	position: relative;
 }
 
 .centering-div {
-    display: block;
-    z-index: 1;
+	display: block;
+	z-index: 1;
 }
 
 .sudoku-puzzle {
-    background-color: black;
-    display: grid;
-    width: var(--puzzle);
-    height: var(--puzzle);
-    grid-template-columns: repeat(3, var(--block));
-    grid-template-rows: repeat(3, var(--block));
-    grid-column-gap: var(--gap);
-    grid-row-gap: var(--gap);
-    padding: var(--gap);
+	background-color: black;
+	display: grid;
+	width: var(--puzzle);
+	height: var(--puzzle);
+	grid-template-columns: repeat(3, var(--block));
+	grid-template-rows: repeat(3, var(--block));
+	grid-column-gap: var(--gap);
+	grid-row-gap: var(--gap);
+	padding: var(--gap);
 }
 
 .sudoku-square {
-    background-color: white;
-    color: black;
-    border: none;
-    width: var(--square);
-    height: var(--square);
-    font-weight: normal;
+	background-color: white;
+	color: black;
+	border: none;
+	width: var(--square);
+	height: var(--square);
+	font-weight: normal;
 }
 
 .sudoku-square.initial-puzzle-value {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .sudoku-block {
-    background-color: #c0c0c0; /* HTML Silver */
-    display: grid;
-    width: var(--block);
-    height: var(--block);
-    grid-template-columns: repeat(3, var(--square));
-    grid-template-rows: repeat(3, var(--square));
-    grid-column-gap: var(--gap);
-    grid-row-gap: var(--gap);
+	background-color: #c0c0c0; /* HTML Silver */
+	display: grid;
+	width: var(--block);
+	height: var(--block);
+	grid-template-columns: repeat(3, var(--square));
+	grid-template-rows: repeat(3, var(--square));
+	grid-column-gap: var(--gap);
+	grid-row-gap: var(--gap);
 }
 
 .value-options {
-    display: grid;
-    padding: var(--gap)
+	display: grid;
+	padding: var(--gap);
 }
 
 .value-button-unselected {
-    border: none;
-    background-color: #c0c0c0; /* HTML Silver */
-    color: black;
-    font-size: 16px;
-    width: var(--square);
-    height: var(--square);
+	border: none;
+	background-color: #c0c0c0; /* HTML Silver */
+	color: black;
+	font-size: 16px;
+	width: var(--square);
+	height: var(--square);
 }
 
 .value-button-selected {
-    border: var(--border) solid black;
-    background-color: #c0c0c0; /* HTML Silver */
-    color: black;
-    width: var(--square);
-    height: var(--square);
+	border: var(--border) solid black;
+	background-color: #c0c0c0; /* HTML Silver */
+	color: black;
+	width: var(--square);
+	height: var(--square);
 }
 
-#clear-solve {
-    border: var(--border) solid black;
-    background-color: #c0c0c0; /* HTML Silver */
-    color: black;
+.button-action {
+	border: var(--border) solid black;
+	background-color: #c0c0c0; /* HTML Silver */
+	color: black;
 }
 
 #about {
-    border: var(--border) solid black;
-    background-color: #c0c0c0; /* HTML Silver */
-    color: black;
-    z-index: 1;
+	border: var(--border) solid black;
+	background-color: #c0c0c0; /* HTML Silver */
+	color: black;
+	z-index: 1;
 }
 
 h1 {
-    font-size: calc(2*var(--font-size));
+	font-size: calc(2*var(--font-size));
 }
 
 h1, h2, p, a, i {
-    background-color: #c0c0c0; /* HTML Silver */
+	background-color: #c0c0c0; /* HTML Silver */
 }
 
 @media only screen and (orientation: portrait) {
-    .about-div {
-        flex-direction: column;
-    }
+	.about-div {
+		flex-direction: column;
+	}
 
-    .centering-div {
-        width: var(--puzzle);
-        margin-top: auto;
-        margin-bottom: auto;
-        margin-left: 5vw;
-        margin-right: 5vw;
-    }
+	.centering-div {
+		width: var(--puzzle);
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 5vw;
+		margin-right: 5vw;
+	}
 
-    .orientation-div {
-        display: block;
-    }
+	.orientation-div {
+		display: block;
+	}
 
-    .value-options {
-        width: var(--puzzle);
-        height: calc(var(--square) + var(--gap));
-        grid-template-columns: repeat(9, var(--square));
-        grid-column-gap: var(--gap);
-        padding-bottom: 0;
-    }
+	.value-options {
+		width: var(--puzzle);
+		height: calc(var(--square) + var(--gap));
+		grid-template-columns: repeat(9, var(--square));
+		grid-column-gap: var(--gap);
+		padding-bottom: 0;
+	}
 
-    #inner-content {
-        width: calc(100vw - 2*var(--square));
-        height: calc(100vh - 4*var(--square));
-    }
+	#inner-content {
+		width: calc(100vw - 2*var(--square));
+		height: calc(100vh - 4*var(--square));
+	}
 
-    #clear-solve {
-        width: var(--puzzle);
-        height: calc(2*var(--square));
-        margin-top: var(--gap);
-    }
+	#div-action-button-layout {
+		width: var(--puzzle);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
 
-    #about {
-        width: 100vw;
-        height: calc(2*var(--square));
-    }
+	.button-action {
+		width: calc(var(--puzzle)/2 - var(--gap)/2);
+		height: calc(2*var(--square));
+		margin-top: var(--gap);
+	}
+
+	#about {
+		width: 100vw;
+		height: calc(2*var(--square));
+	}
 }
 
 @media only screen and (orientation: landscape) {
-    .centering-div {
-        margin-top: 5vh;
-        margin-bottom: 5vh;
-        margin-left: auto;
-        margin-right: auto;
-    }
+	.centering-div {
+		margin-top: 5vh;
+		margin-bottom: 5vh;
+		margin-left: auto;
+		margin-right: auto;
+	}
 
-    .orientation-div {
-        display: flex;
-    }
+	.orientation-div {
+		display: flex;
+	}
 
-    .value-options {
-        width: calc(var(--square) + var(--gap));
-        height: var(--puzzle);
-        grid-template-rows: repeat(9, var(--square));
-        grid-row-gap: var(--gap);
-        padding-right: 0;
-    }
+	.value-options {
+		width: calc(var(--square) + var(--gap));
+		height: var(--puzzle);
+		grid-template-rows: repeat(9, var(--square));
+		grid-row-gap: var(--gap);
+		padding-right: 0;
+	}
 
-    #inner-content {
-        width: calc(100vw - 4*var(--square));
-        height: calc(100vh - 2*var(--square));
-    }
+	#inner-content {
+		width: calc(100vw - 4*var(--square));
+		height: calc(100vh - 2*var(--square));
+	}
 
-    #clear-solve {
-        width: calc(2*var(--square));
-        height: var(--puzzle);
-        margin-left: var(--gap);
-    }
+	#div-action-button-layout {
+		height: var(--puzzle);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
 
-    #about {
-        width: calc(2*var(--square));
-        height: 100vh;
-    }
+	.button-action {
+		width: calc(2*var(--square));
+		height: calc(var(--puzzle)/2 - var(--gap)/2);
+		margin-left: var(--gap);
+	}
+
+	#about {
+		width: calc(2*var(--square));
+		height: 100vh;
+	}
 }

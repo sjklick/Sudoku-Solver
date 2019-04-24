@@ -22,7 +22,6 @@ in order to quickly return control to the user if an invalid puzzle was entered.
 Todo
 ----
 - Add a default puzzle to try for the users who just want to see the app in action
-- Bring back separate clear and solve buttons
 - Add a loader with a cancel option while the puzzle is being solved
 - Make it so that the puzzle solver pauses after a number of iterations
   - gives the interface a chance to update and respond to the user pressing cancel
