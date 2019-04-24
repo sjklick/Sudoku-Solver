@@ -68,7 +68,7 @@ body {
 	font-weight: normal;
 }
 
-.sudoku-square.initial-puzzle-value {
+.init-value {
 	font-weight: bold;
 }
 
