@@ -88,7 +88,7 @@ function clear_grid() {
     var square_index;
     for (square_index=0; square_index< 9*9; square_index++) {
         sudoku_square[square_index].innerText = "";
-        sudoku_square[square_index].classList.remove("initial-puzzle-value");
+        sudoku_square[square_index].classList.remove("init-value");
     }
 }
 
@@ -100,10 +100,10 @@ function value_select(value_button) {
 
 function enter_value(sudoku_square) {
     if (sudoku_square.innerText == "") {
-        sudoku_square.classList.add("initial-puzzle-value");
+        sudoku_square.classList.add("init-value");
         sudoku_square.innerText = value_selection.toString();
     } else {
-        sudoku_square.classList.remove("initial-puzzle-value");
+        sudoku_square.classList.remove("init-value");
         sudoku_square.innerText = "";
     }
 }
