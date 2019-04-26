@@ -16,14 +16,7 @@ Program Explanation
 This solver uses a recursive algorithm to try possible options until a solution
 is found. At each iteration and each square, it checks which numbers (1-9 inclusive)
 are available for use based on the corresponding row, column, and 3x3 block, and
-updates the possible options accordingly. The number of iterations has a fixed limit
-in order to quickly return control to the user if an invalid puzzle was entered.
-
-Todo
-----
-- Add a loader with a cancel option while the puzzle is being solved
-- Make it so that the puzzle solver pauses after a number of iterations
-  - gives the interface a chance to update and respond to the user pressing cancel
+updates the possible options accordingly.
 
 Contact
 -------

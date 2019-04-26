@@ -39,7 +39,6 @@ body {
 	background-color: #c0c0c0; /* HTML Silver */
 	position: absolute;
 	z-index: 1100;
-	opacity: 0.9;
 	top: 0;
 	left: 0;
 	width: 100vw;
@@ -47,22 +46,65 @@ body {
 	visibility: hidden;
 }
 
-#load-animation {
+#status {
+	margin: 0;
+	padding: 0;
+}
+
+.load-animation {
 	width: 30vmin;
 	height: 30vmin;
 	border: 3vmin solid #c0c0c0; /* HTML Silver */
-	border-top: 3vmin solid #696969; /* Dark Gray */
-	border-right: 3vmin solid black; /* Dark Gray */
-	border-bottom: 3vmin solid #696969; /* Dark Gray */
-	border-left: 3vmin solid black; /* Dark Gray */
+	border-top: 3vmin solid olive;
+	border-right: 3vmin solid yellow;
+	border-bottom: 3vmin solid olive;
+	border-left: 3vmin solid yellow;
 	border-radius: 50%;
 	background-color: #c0c0c0; /* HTML Silver */
 	animation: spin 1.5s linear infinite;
 }
 
+.view-animation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30vmin;
+	height: 30vmin;
+	background-color: #c0c0c0; /* HTML Silver */
+	text-align: center;
+	color: green;
+	font-size: 30vmin;
+	animation: glow-green 1.5s linear infinite;
+}
+
+.edit-animation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30vmin;
+	height: 30vmin;
+	background-color: #c0c0c0; /* HTML Silver */
+	text-align: center;
+	color: maroon;
+	font-size: 30vmin;
+	animation: glow-red 1.5s linear infinite;
+}
+
 @keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
+}
+
+@keyframes glow-green {
+	0% { color: green; }
+	50% { color: lime; }
+	100% { color: green; }
+}
+
+@keyframes glow-red {
+	0% { color: maroon; }
+	50% { color: red; }
+	100% { color: maroon; }
 }
 
 #inner-content {
@@ -147,7 +189,7 @@ body {
 	color: black;
 }
 
-#button-cancel {
+#button-cancel-view {
 	border: var(--border) solid black;
 	background-color: #c0c0c0; /* HTML Silver */
 	color: black;

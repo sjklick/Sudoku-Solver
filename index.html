@@ -148,9 +148,9 @@
 			<button id="about" onclick="toggle_hidden_content();">About</button>
 		</div>
 		<div id="loader">
-			<h2>Solving...</h2>
-			<div id="load-animation"></div>
-			<button id="button-cancel" onclick="cancel();">Cancel</button>
+			<h2 id="status">Solving...</h2>
+			<div id="status-symbol" class="load-animation"></div>
+			<button id="button-cancel-view" onclick="cancel_view_button_pressed(this);">Cancel</button>
 		</div>
 		<script src="sudoku-solver.js"></script>
 	</body>
