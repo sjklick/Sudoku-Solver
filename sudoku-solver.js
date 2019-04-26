@@ -4,13 +4,15 @@ var content_hidden = true;
 
 function initialize_site(event) {
     if (document.readyState == "complete") {
-        var hidden_content;
+        let hidden_content, loader;
         hidden_content = document.getElementById("hidden-content");
         hidden_content.style.transition = "none";
         hidden_content.style.width = "0";
         hidden_content.style.height = "0";
         hidden_content.style.bottom = "0";
         hidden_content.style.right = "0";
+		loader = document.getElementById("loader");
+		loader.style.visibility = "hidden";
     }
 }
 
@@ -461,5 +463,14 @@ function clear_button_pressed() {
 }
 
 function solve_button_pressed() {
+	var loader;
+	loader = document.getElementById("loader");
+    loader.style.visibility = "visible";
     solve();
+}
+
+function cancel() {
+	var loader;
+	loader = document.getElementById("loader");
+    loader.style.visibility = "hidden";
 }

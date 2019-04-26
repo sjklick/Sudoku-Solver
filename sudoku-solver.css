@@ -29,6 +29,42 @@ body {
 	overflow: hidden;
 }
 
+#loader {
+	padding-top: 15vmin;
+	padding-bottom: 15vmin;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+	background-color: #c0c0c0; /* HTML Silver */
+	position: absolute;
+	z-index: 1100;
+	opacity: 0.9;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	visibility: hidden;
+}
+
+#load-animation {
+	width: 30vmin;
+	height: 30vmin;
+	border: 3vmin solid #c0c0c0; /* HTML Silver */
+	border-top: 3vmin solid #696969; /* Dark Gray */
+	border-right: 3vmin solid black; /* Dark Gray */
+	border-bottom: 3vmin solid #696969; /* Dark Gray */
+	border-left: 3vmin solid black; /* Dark Gray */
+	border-radius: 50%;
+	background-color: #c0c0c0; /* HTML Silver */
+	animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
 #inner-content {
 	background-color: #c0c0c0; /* HTML Silver */
 	opacity: 1;
@@ -109,6 +145,14 @@ body {
 	border: var(--border) solid black;
 	background-color: #c0c0c0; /* HTML Silver */
 	color: black;
+}
+
+#button-cancel {
+	border: var(--border) solid black;
+	background-color: #c0c0c0; /* HTML Silver */
+	color: black;
+	width: 30vmin;
+	height: 15vmin;
 }
 
 #about {
