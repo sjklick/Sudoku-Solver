@@ -142,6 +142,14 @@ function options_to_document(options) {
     }
 }
 
+function disable_editing(enable) {
+	let sudoku_square = document.getElementsByClassName("sudoku-square");
+    let square_index;
+    for (square_index=0; square_index< 9*9; square_index++) {
+        sudoku_square[square_index].disabled = enable;
+    }
+}
+
 function solve_button_pressed() {
 	let loader, options;
 	loader = document.getElementById("loader");
@@ -160,6 +168,7 @@ function solve_button_pressed() {
 			statusSymbol.classList.remove("edit-animation")
 			statusSymbol.classList.add("view-animation");
 			statusSymbol.innerText = "\u2713";
+			disable_editing(true);
 		} else {
 			let button, status, statusSymbol;
 			status = document.getElementById("status");
@@ -184,6 +193,7 @@ function clear_button_pressed() {
         sudoku_square[square_index].innerText = "";
         sudoku_square[square_index].classList.remove("init-value");
     }
+	disable_editing(false);
 }
 
 function cancel_view_button_pressed(button) {

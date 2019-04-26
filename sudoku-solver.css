@@ -20,23 +20,20 @@ body {
 
 #hidden-content {
 	display: block;
-	background-color: #c0c0c0; /* HTML Silver */
+	background-color: #909090;
 	position: absolute;
 	z-index: 1000;
-	opacity: 0.9;
 	width: 0;
 	height: 0;
 	overflow: hidden;
 }
 
 #loader {
-	padding-top: 15vmin;
-	padding-bottom: 15vmin;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background-color: #c0c0c0; /* HTML Silver */
+	background-color: #909090;
 	position: absolute;
 	z-index: 1100;
 	top: 0;
@@ -52,42 +49,48 @@ body {
 }
 
 .load-animation {
-	width: 30vmin;
-	height: 30vmin;
+	width: 40vmin;
+	height: 40vmin;
 	border: 3vmin solid #c0c0c0; /* HTML Silver */
 	border-top: 3vmin solid olive;
 	border-right: 3vmin solid yellow;
 	border-bottom: 3vmin solid olive;
 	border-left: 3vmin solid yellow;
 	border-radius: 50%;
-	background-color: #c0c0c0; /* HTML Silver */
+	background-color: #909090;
 	animation: spin 1.5s linear infinite;
+	margin-top: 5vmin;
+	margin-bottom: 5vmin;
 }
 
 .view-animation {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 30vmin;
-	height: 30vmin;
-	background-color: #c0c0c0; /* HTML Silver */
+	width: 40vmin;
+	height: 40vmin;
+	background-color: #909090;
 	text-align: center;
 	color: green;
-	font-size: 30vmin;
+	font-size: 40vmin;
 	animation: glow-green 1.5s linear infinite;
+	margin-top: 5vmin;
+	margin-bottom: 5vmin;
 }
 
 .edit-animation {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 30vmin;
-	height: 30vmin;
-	background-color: #c0c0c0; /* HTML Silver */
+	width: 40vmin;
+	height: 40vmin;
+	background-color: #909090;
 	text-align: center;
 	color: maroon;
-	font-size: 30vmin;
+	font-size: 40vmin;
 	animation: glow-red 1.5s linear infinite;
+	margin-top: 5vmin;
+	margin-bottom: 5vmin;
 }
 
 @keyframes spin {
@@ -108,7 +111,7 @@ body {
 }
 
 #inner-content {
-	background-color: #c0c0c0; /* HTML Silver */
+	background-color: #909090;
 	opacity: 1;
 	margin: var(--square) var(--square);
 }
@@ -193,7 +196,7 @@ body {
 	border: var(--border) solid black;
 	background-color: #c0c0c0; /* HTML Silver */
 	color: black;
-	width: 30vmin;
+	width: 40vmin;
 	height: 15vmin;
 }
 
@@ -209,7 +212,7 @@ h1 {
 }
 
 h1, h2, p, a, i {
-	background-color: #c0c0c0; /* HTML Silver */
+	background-color: #909090;
 }
 
 @media only screen and (orientation: portrait) {
