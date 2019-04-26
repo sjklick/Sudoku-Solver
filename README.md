@@ -3,12 +3,15 @@ Soduko-Solver
 
 Try the [live demo](https://sjklick.github.io/Sudoku-Solver/)!
 
+![HTML5](https://www.w3.org/html/logo/downloads/HTML5_Logo.svg)
+![CSS3](https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg)
+![Javascript](https://github.com/voodootikigod/logo.js/blob/master/js.svg)
+
 Summary
 -------
 
-This is an implementation of a solver for the popular Soduku puzzle,
-developed as a learning exercise. The application is written with HTML,
-CSS, and JavaScript.
+This is an implementation of a solver for the popular Soduku puzzle.
+The application is written with HTML5, CSS3, and JavaScript.
 
 Program Explanation
 -------------------
