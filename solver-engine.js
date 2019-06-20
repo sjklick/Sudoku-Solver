@@ -186,37 +186,7 @@ function is_valid_row(row, options) {
     var column, choices, index, value;
     choices = [];
     for (column=0; column<9; column++) {
-        value = options[row][column][0];
-        for (index=0; index<choices.length; index++) {
-            if (choices[index] == value) {
-                return false;
-            }
-        }
-        choices.push(value);
-    }
-    return true;
-}
-
-function is_valid_column(column, options) {
-    var row, choices, index, value;
-    choices = [];
-    for (row=0; row<9; row++) {
-        value = options[row][column][0];
-        for (index=0; index<choices.length; index++) {
-            if (choices[index] == value) {
-                return false;
-            }
-        }
-        choices.push(value);
-    }
-    return true;
-}
-
-function is_valid_block(block_row, block_column, options) {
-    var row, column, choices, index, value;
-    choices = [];
-    for (row=block_row*3; row<block_row*3+3; row++) {
-        for (column=block_column*3; column<block_column*3+3; column++) {
+        if (options[row][column].length == 1) {
             value = options[row][column][0];
             for (index=0; index<choices.length; index++) {
                 if (choices[index] == value) {
@@ -229,7 +199,43 @@ function is_valid_block(block_row, block_column, options) {
     return true;
 }
 
-function is_valid_solution(options) {
+function is_valid_column(column, options) {
+    var row, choices, index, value;
+    choices = [];
+    for (row=0; row<9; row++) {
+        if (options[row][column].length == 1) {
+            value = options[row][column][0];
+            for (index=0; index<choices.length; index++) {
+                if (choices[index] == value) {
+                    return false;
+                }
+            }
+            choices.push(value);
+        }
+    }
+    return true;
+}
+
+function is_valid_block(block_row, block_column, options) {
+    var row, column, choices, index, value;
+    choices = [];
+    for (row=block_row*3; row<block_row*3+3; row++) {
+        for (column=block_column*3; column<block_column*3+3; column++) {
+            if (options[row][column].length == 1) {
+                value = options[row][column][0];
+                for (index=0; index<choices.length; index++) {
+                    if (choices[index] == value) {
+                        return false;
+                    }
+                }
+                choices.push(value);
+            }
+        }
+    }
+    return true;
+}
+
+function is_valid(options) {
     var row, column, block_row, block_column;
     for (row=0; row<9; row++) {
         if (!is_valid_row(row, options)) return false;
@@ -259,7 +265,7 @@ function recursive_solve(options) {
     }
     /* Check if the puzzle grid is completely filled. */
     if (is_complete(options)) {
-        if (is_valid_solution(options)) {
+        if (is_valid(options)) {
             return options;
         } else {
             return null;
@@ -299,7 +305,7 @@ function is_empty(options) {
 }
 
 self.addEventListener('message', function(e) {
-    if (is_empty(e.data)) options = null;
+    if (is_empty(e.data) || !is_valid(e.data)) options = null;
     else options = recursive_solve(e.data);
 	self.postMessage(options);
 }, false);
