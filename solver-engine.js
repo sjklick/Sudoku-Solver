@@ -289,7 +289,17 @@ function recursive_solve(options) {
     }
 }
 
+function is_empty(options) {
+    for (row=0; row<9; row++) {
+        for (column=0; column<9; column++) {
+            if (options[row][column].length != 9) return false;
+        }
+    }
+    return true;
+}
+
 self.addEventListener('message', function(e) {
-	options = recursive_solve(e.data);
+    if (is_empty(e.data)) options = null;
+    else options = recursive_solve(e.data);
 	self.postMessage(options);
 }, false);
